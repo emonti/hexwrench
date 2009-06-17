@@ -7,8 +7,6 @@
 
 Hexwrench is a gui-based hex editor written in ruby based using wxruby.
 
-== SYNOPSIS:
-
 
 == REQUIREMENTS:
 
@@ -20,19 +18,16 @@ Hexwrench is a gui-based hex editor written in ruby based using wxruby.
 
 === Gem Installation
 
-rbkb is available as a gem from github:
-
     gem sources -a http://gems.github.com #(you only have to do this once)
     gem install emonti-hexwrench
 
-
 === Manual installation:
 
-You can access the rbkb project at github. (You'll want to have git installed):
+You can access the latest hexwrench branches at github with git:
 
   git clone git://github.com/emonti/hexwrench.git
 
-To install the gem locally do:
+To generate the gem locally do:
 
   cd hexwrench
   rake gem:install
