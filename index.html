@@ -52,37 +52,42 @@
       A gui hex editor written in ruby with wxwidgets (wxruby)
     </div>
 
-    <p>hexwrench aims to be a scriptable hex editor which can be easily modified and extended using the ruby scripting language.</p><h2>Dependencies</h2>
-<p>wxruby >= 0.2.0
-wxirb is optional, but adds a console</p>
-<h2>Install</h2>
-<p>=== Gem Installation
+    <p>hexwrench aims to be a scriptable hex editor which can be easily modified and extended using the ruby scripting language.</p>
+    
+<h2>Dependencies</h2>
+<p>wxruby >= 0.2.0<br/>
+<a href="http://github.com/emonti/wxirb">wxirb</a> is optional (integrates an IRB console)</p>
 
+<h2>Install</h2>
+
+<h3>Gem Installation</h3>
+<pre>
     gem sources -a http://gems.github.com #(you only have to do this once)
     gem install emonti-hexwrench
+</pre>
 
-=== Manual installation:
+<h3>Manual Installation</h3>
+<p>You can also download the tarball, zipball, or clone via git.</p>
 
-You can access the latest hexwrench branches at github with git:
-
-  git clone git://github.com/emonti/hexwrench.git
-
-To generate the gem locally do:
-
+<p>To generate the gem locally do:</p>
+<pre>
   cd hexwrench
   rake gem:install
+</pre>
 
-or ... you can install manually without rubygems.
+<p>or ... you can install manually without rubygems:</p>
 
+<pre>
   cd hexwrench
   cp -r hexwrench/lib/* /usr/lib/ruby/1.8/site_ruby/1.8 # or another ruby libdir
   cp bin/* ~/bin      # or wherever else in your PATH
+</pre>
 
-Run this to generate docs with rdoc the same way the gem would have:
-
+<p>Run this to generate docs with rdoc the same way the gem would have:</p>
+<pre>
   rdoc --main README.rdoc README.rdoc lib
+</pre>
 
-</p>
 <h2>License</h2>
 <p>(The MIT License) 
 
@@ -107,11 +112,8 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </p>
-<h2>Authors</h2>
-<p>Eric Monti (emonti@matasano.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Eric Monti (emonti@matasano.com)<br/>      </p>
-
+<h2>Author</h2>
+<p>Eric Monti (emonti@matasano.com)<br/><br/>      </p>
 
     <h2>Download</h2>
     <p>
