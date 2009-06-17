@@ -1,7 +1,0 @@
-== 0.2.0 / 2009-06-17
-* release version
-
-== 0.1.0 / 2009-03-20
-
-* enhancements
-  * Started using bones to help manage this mess. History.txt is born!
