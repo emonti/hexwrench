@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_jump_util (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 210</span>
+210:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_jump_util</span>(<span class="ruby-identifier">evt</span>)
+211:       <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@util_jump</span>.<span class="ruby-identifier">value</span>
+212:       <span class="ruby-keyword kw">if</span>((<span class="ruby-identifier">m</span>=<span class="ruby-regexp re">/^(?:0?x([A-Fa-f0-9]+)|(\d+))$/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">val</span>)) <span class="ruby-keyword kw">and</span>
+213:          (<span class="ruby-identifier">idx</span> = (<span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>])<span class="ruby-operator">?</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">hex</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>) <span class="ruby-keyword kw">and</span>
+214:          (<span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">data</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">idx</span>))
+215:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">clear_selection</span>()
+216:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">set_area_hex</span>()
+217:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">move_to_idx</span>(<span class="ruby-identifier">idx</span>)
+218:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">refresh</span>
+219:       <span class="ruby-keyword kw">else</span>
+220:         <span class="ruby-ivar">@util_jump</span>.<span class="ruby-identifier">do_error</span>
+221:       <span class="ruby-keyword kw">end</span>
+222:       <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">set_focus</span>
+223:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

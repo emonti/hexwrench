@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>resolve_key_code (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 569</span>
+569:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve_key_code</span>(<span class="ruby-identifier">code</span>)
+570:       <span class="ruby-identifier">name</span>=<span class="ruby-keyword kw">nil</span>
+571:       <span class="ruby-constant">Wx</span>.<span class="ruby-identifier">constants</span>.<span class="ruby-identifier">grep</span>(<span class="ruby-regexp re">/^K_/</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">kconst</span><span class="ruby-operator">|</span>
+572:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Wx</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">kconst</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">code</span>
+573:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">kconst</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/^K_/</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">downcase</span>
+574:         <span class="ruby-keyword kw">end</span>
+575:       <span class="ruby-keyword kw">end</span>
+576:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

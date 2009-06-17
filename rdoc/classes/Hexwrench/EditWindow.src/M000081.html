@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>colorize_byte_bg (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 344</span>
+344:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">colorize_byte_bg</span>(<span class="ruby-identifier">brush</span>, <span class="ruby-identifier">dc</span>, <span class="ruby-identifier">hX</span>, <span class="ruby-identifier">aX</span>, <span class="ruby-identifier">y</span>)
+345:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">brush</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
+346:         <span class="ruby-identifier">hbrush</span>, <span class="ruby-identifier">abrush</span> = <span class="ruby-identifier">brush</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
+347:       <span class="ruby-keyword kw">else</span>
+348:         <span class="ruby-identifier">hbrush</span> = <span class="ruby-identifier">abrush</span> = <span class="ruby-identifier">brush</span>
+349:       <span class="ruby-keyword kw">end</span>
+350: 
+351:       <span class="ruby-identifier">h_off</span> = <span class="ruby-ivar">@hex_width</span> <span class="ruby-operator">/</span><span class="ruby-value">4</span>
+352: 
+353:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_pen</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">TRANSPARENT_PEN</span>)
+354: 
+355:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_brush</span>(<span class="ruby-identifier">hbrush</span>)
+356:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_rectangle</span>(<span class="ruby-identifier">hX</span><span class="ruby-operator">-</span><span class="ruby-identifier">h_off</span>, <span class="ruby-identifier">y</span>, <span class="ruby-ivar">@hex_width</span><span class="ruby-operator">+</span><span class="ruby-identifier">h_off</span><span class="ruby-operator">+</span><span class="ruby-identifier">h_off</span>, <span class="ruby-ivar">@txt_height</span>)
+357:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_brush</span>(<span class="ruby-identifier">abrush</span>)
+358:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_rectangle</span>(<span class="ruby-identifier">aX</span>, <span class="ruby-identifier">y</span>, <span class="ruby-ivar">@asc_width</span>, <span class="ruby-ivar">@txt_height</span>)
+359: 
+360:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+361:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

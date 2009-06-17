@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_key_delete (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 657</span>
+657:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_key_delete</span>(<span class="ruby-identifier">evt</span>)
+658:       <span class="ruby-ivar">@hexbyte_started</span>=<span class="ruby-keyword kw">false</span>
+659:       <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@selection</span>.<span class="ruby-identifier">nil?</span>
+660:         <span class="ruby-identifier">idx</span>=<span class="ruby-identifier">gui_set_value</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">''</span>)
+661:         <span class="ruby-identifier">move_to_idx</span>(<span class="ruby-identifier">idx</span>)
+662:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@data</span>[<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span>]
+663:         <span class="ruby-identifier">gui_set_value</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span>, <span class="ruby-value str">''</span>)
+664:         <span class="ruby-identifier">refresh</span>
+665:       <span class="ruby-keyword kw">end</span>
+666:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

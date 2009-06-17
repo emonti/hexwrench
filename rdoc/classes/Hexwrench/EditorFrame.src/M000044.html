@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_menu_open (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 271</span>
+271:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_menu_open</span>(<span class="ruby-identifier">evt</span>)
+272:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@buffer_changed</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">confirm_discard_changes?</span>
+273: 
+274:       <span class="ruby-identifier">open_dlg</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">FileDialog</span>.<span class="ruby-identifier">new</span>( <span class="ruby-keyword kw">self</span>, 
+275:         <span class="ruby-identifier">:style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">FD_OPEN</span><span class="ruby-operator">|</span><span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">FD_FILE_MUST_EXIST</span>)
+276: 
+277:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">open_dlg</span>.<span class="ruby-identifier">show_modal</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">ID_OK</span> 
+278:         <span class="ruby-identifier">do_open_file</span>(<span class="ruby-identifier">open_dlg</span>.<span class="ruby-identifier">path</span>)
+279:       <span class="ruby-keyword kw">end</span>
+280:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

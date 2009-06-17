@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>init_menu_bar (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 65</span>
+ 65:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">init_menu_bar</span>
+ 66:       <span class="ruby-comment cmt"># File menu</span>
+ 67:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_open</span>, <span class="ruby-identifier">:on_menu_open</span>
+ 68:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_new</span>, <span class="ruby-identifier">:on_menu_new</span>
+ 69:       <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@mitem_save</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">do_save</span>() }
+ 70:       <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@mitem_quit</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">do_quit</span>() }
+ 71: 
+ 72:       <span class="ruby-comment cmt"># Edit menu</span>
+ 73:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_copy</span>, <span class="ruby-identifier">:on_menu_copy</span>
+ 74:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_cut</span>, <span class="ruby-identifier">:on_menu_cut</span>
+ 75:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_paste</span>, <span class="ruby-identifier">:on_menu_paste</span>
+ 76:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_select_all</span>, <span class="ruby-identifier">:on_menu_select_all</span>
+ 77:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_select_range</span>, <span class="ruby-identifier">:on_menu_stub</span>
+ 78:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_adv_search</span>, <span class="ruby-identifier">:on_menu_stub</span>
+ 79: 
+ 80:       <span class="ruby-comment cmt"># Tools menu</span>
+ 81:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_data_inspector</span>, <span class="ruby-identifier">:on_menu_data_inspector</span>
+ 82:       <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_strings</span>, <span class="ruby-identifier">:on_menu_strings</span>
+ 83: 
+ 84:       <span class="ruby-identifier">mb</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_menu_bar</span>
+ 85: 
+ 86:       <span class="ruby-comment cmt"># Create hot-key &quot;accelerators&quot; for menu items</span>
+ 87:       <span class="ruby-comment cmt"># Note: Clipboard hot-keys are handled in child controls</span>
+ 88:       <span class="ruby-identifier">shortcuts</span>=[
+ 89:         [<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span>, <span class="ruby-value">?o</span>, <span class="ruby-ivar">@mitem_open</span>],
+ 90:         [<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span>, <span class="ruby-value">?n</span>, <span class="ruby-ivar">@mitem_new</span>],
+ 91:         [<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span>, <span class="ruby-value">?s</span>, <span class="ruby-ivar">@mitem_save</span>],
+ 92:         [<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span>, <span class="ruby-value">?q</span>, <span class="ruby-ivar">@mitem_quit</span>],
+ 93:         [<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span>, <span class="ruby-value">?r</span>, <span class="ruby-ivar">@mitem_select_range</span>],
+ 94:         [<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span>, <span class="ruby-value">?f</span>, <span class="ruby-ivar">@mitem_adv_search</span>],
+ 95:         [<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span>, <span class="ruby-value">?i</span>, <span class="ruby-ivar">@mitem_data_inspector</span>],
+ 96:         [<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span><span class="ruby-operator">|</span><span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_SHIFT</span>, <span class="ruby-value">?s</span>, <span class="ruby-ivar">@mitem_strings</span>],
+ 97:       ]
+ 98: 
+ 99:       <span class="ruby-comment cmt"># add the WXIRB console option to the tools menu if it's available</span>
+100:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">HAVE_WXIRB</span>
+101:         <span class="ruby-identifier">tools</span> = <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">get_menu</span>(<span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_menu</span>(<span class="ruby-value str">&quot;Tools&quot;</span>))
+102:         <span class="ruby-identifier">cons_item</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MenuItem</span>.<span class="ruby-identifier">new</span>(
+103:           <span class="ruby-identifier">tools</span>, 
+104:           <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">ID_ANY</span>, 
+105:           <span class="ruby-value str">&quot;WxIRB Console&quot;</span>, 
+106:           <span class="ruby-value str">&quot;Toggle Console. Key: shift+cmd+C&quot;</span>
+107:         )
+108:         <span class="ruby-identifier">tools</span>.<span class="ruby-identifier">append_separator</span>
+109:         <span class="ruby-identifier">tools</span>.<span class="ruby-identifier">append_item</span>(<span class="ruby-identifier">cons_item</span>)
+110:         <span class="ruby-ivar">@mitem_console</span> = <span class="ruby-identifier">cons_item</span>.<span class="ruby-identifier">get_id</span>
+111:         <span class="ruby-identifier">evt_menu</span> <span class="ruby-ivar">@mitem_console</span>, <span class="ruby-identifier">:on_menu_console</span>
+112:         <span class="ruby-identifier">shortcuts</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span><span class="ruby-operator">|</span><span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_SHIFT</span>, <span class="ruby-value">?c</span>, <span class="ruby-ivar">@mitem_console</span>]
+113:       <span class="ruby-keyword kw">end</span>
+114: 
+115:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">accelerator_table</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">AcceleratorTable</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">shortcuts</span>]
+116: 
+117:       <span class="ruby-comment cmt"># Set usage help so it will appear in status bar on mouse-over.</span>
+118:       <span class="ruby-comment cmt"># We need to look menu items up since they are given to us as ID</span>
+119:       <span class="ruby-comment cmt"># values by the XRC stub</span>
+120:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_open</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Open a file in editor. Key: cmd+o&quot;</span>
+121:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_new</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Start a new buffer. Key: cmd+n&quot;</span>
+122:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_save</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Save to a file. Key: cmd+s&quot;</span>
+123:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_quit</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Quit program. Key: cmd+q&quot;</span>
+124:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_copy</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Copy to clipboard. Key: cmd+c&quot;</span>
+125:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_cut</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Cut to clipboard. Key: cmd+x&quot;</span>
+126:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_paste</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Paste from clipboard. Key: cmd+v&quot;</span>
+127:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_select_all</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Select entire buffer. Key: cmd+a&quot;</span>
+128:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_select_range</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Select a range. Key: cmd+r&quot;</span>
+129:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_adv_search</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Adv. search/replace. Key: cmd+f&quot;</span>
+130:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_data_inspector</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Toggle Inspector. Key: cmd+i&quot;</span>
+131:       <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">find_item</span>(<span class="ruby-ivar">@mitem_strings</span>).<span class="ruby-identifier">help</span>=<span class="ruby-value str">&quot;Toggle Strings. Key: shift+cmd+S&quot;</span>
+132: 
+133:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">mb</span>
+134:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

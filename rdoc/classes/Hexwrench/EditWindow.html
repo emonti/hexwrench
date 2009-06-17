@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Hexwrench::EditWindow</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Hexwrench::EditWindow</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/hexwrench/edit_window_rb.html">
+                lib/hexwrench/edit_window.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Wx::VScrolledWindow
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The <a href="EditWindow.html">EditWindow</a> is the actual hex editor
+widget. This is a pure ruby implementation using WxRuby&#8216;s
+VScrolledWindow and direct painting for the hexdump and all editor actions
+within it.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000105">area_for_x</a>&nbsp;&nbsp;
+      <a href="#M000088">clear_selection</a>&nbsp;&nbsp;
+      <a href="#M000081">colorize_byte_bg</a>&nbsp;&nbsp;
+      <a href="#M000104">coords_to_idx</a>&nbsp;&nbsp;
+      <a href="#M000069">cur_pos</a>&nbsp;&nbsp;
+      <a href="#M000070">cur_pos=</a>&nbsp;&nbsp;
+      <a href="#M000084">disp_ascii_byte</a>&nbsp;&nbsp;
+      <a href="#M000083">disp_hex_byte</a>&nbsp;&nbsp;
+      <a href="#M000111">do_clipboard_copy</a>&nbsp;&nbsp;
+      <a href="#M000112">do_clipboard_cut</a>&nbsp;&nbsp;
+      <a href="#M000113">do_clipboard_paste</a>&nbsp;&nbsp;
+      <a href="#M000110">do_select_all</a>&nbsp;&nbsp;
+      <a href="#M000087">expand_selection</a>&nbsp;&nbsp;
+      <a href="#M000094">gui_set_value</a>&nbsp;&nbsp;
+      <a href="#M000074">init_font</a>&nbsp;&nbsp;
+      <a href="#M000067">ins_mode</a>&nbsp;&nbsp;
+      <a href="#M000068">ins_mode=</a>&nbsp;&nbsp;
+      <a href="#M000092">move_cursor_down</a>&nbsp;&nbsp;
+      <a href="#M000091">move_cursor_left</a>&nbsp;&nbsp;
+      <a href="#M000090">move_cursor_right</a>&nbsp;&nbsp;
+      <a href="#M000093">move_cursor_up</a>&nbsp;&nbsp;
+      <a href="#M000089">move_to_idx</a>&nbsp;&nbsp;
+      <a href="#M000066">new</a>&nbsp;&nbsp;
+      <a href="#M000096">on_char</a>&nbsp;&nbsp;
+      <a href="#M000102">on_char_ascii</a>&nbsp;&nbsp;
+      <a href="#M000103">on_char_hex</a>&nbsp;&nbsp;
+      <a href="#M000071">on_create</a>&nbsp;&nbsp;
+      <a href="#M000073">on_get_line_height</a>&nbsp;&nbsp;
+      <a href="#M000076">on_idle</a>&nbsp;&nbsp;
+      <a href="#M000097">on_key_back</a>&nbsp;&nbsp;
+      <a href="#M000098">on_key_delete</a>&nbsp;&nbsp;
+      <a href="#M000109">on_key_tab</a>&nbsp;&nbsp;
+      <a href="#M000106">on_left_button_down</a>&nbsp;&nbsp;
+      <a href="#M000107">on_left_button_up</a>&nbsp;&nbsp;
+      <a href="#M000108">on_mouse_motion</a>&nbsp;&nbsp;
+      <a href="#M000078">on_paint</a>&nbsp;&nbsp;
+      <a href="#M000072">on_size</a>&nbsp;&nbsp;
+      <a href="#M000080">paint_boundaries</a>&nbsp;&nbsp;
+      <a href="#M000082">paint_cursor</a>&nbsp;&nbsp;
+      <a href="#M000079">paint_row</a>&nbsp;&nbsp;
+      <a href="#M000095">resolve_key_code</a>&nbsp;&nbsp;
+      <a href="#M000085">scroll_to_idx</a>&nbsp;&nbsp;
+      <a href="#M000086">select_range</a>&nbsp;&nbsp;
+      <a href="#M000100">set_area_ascii</a>&nbsp;&nbsp;
+      <a href="#M000101">set_area_hex</a>&nbsp;&nbsp;
+      <a href="#M000077">set_data</a>&nbsp;&nbsp;
+      <a href="#M000099">switch_areas</a>&nbsp;&nbsp;
+      <a href="#M000075">update_dimensions</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="EditWindow/RawDataObject.html" class="link">Hexwrench::EditWindow::RawDataObject</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">HEX_CHARS</td>
+          <td>=</td>
+          <td class="context-item-value">['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_FONT</td>
+          <td>=</td>
+          <td class="context-item-value">Wx::Font.new(10, Wx::MODERN, Wx::NORMAL, Wx::NORMAL)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">STYLE</td>
+          <td>=</td>
+          <td class="context-item-value">Wx::VSCROLL |Wx::ALWAYS_SHOW_SB</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">AREAS</td>
+          <td>=</td>
+          <td class="context-item-value">[ :hex, :ascii ]</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">HEX_AREA</td>
+          <td>=</td>
+          <td class="context-item-value">0</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ASCII_AREA</td>
+          <td>=</td>
+          <td class="context-item-value">1</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">cursor</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">data</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">font</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">post_paint_proc</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">selection</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000066.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000066.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(parent, data, opt={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000105" class="method-detail">
+        <a name="M000105"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000105.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000105.html');return false;">
+          <span class="method-name">area_for_x</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns the area (display column) for an x window coordinate
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000088" class="method-detail">
+        <a name="M000088"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000088.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000088.html');return false;">
+          <span class="method-name">clear_selection</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Clear&#8216;s the text/data selection if one has been made
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000081" class="method-detail">
+        <a name="M000081"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000081.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000081.html');return false;">
+          <span class="method-name">colorize_byte_bg</span><span class="method-args">(brush, dc, hX, aX, y)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+A helper method for colorizing post_paint_proc blocks. this colorizes the
+hex and ascii background for a given byte position with the same color.
+brush must be a Wx::Brush object.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000104" class="method-detail">
+        <a name="M000104"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000104.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000104.html');return false;">
+          <span class="method-name">coords_to_idx</span><span class="method-args">(x, y, area)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns data index for [x, y] inside the specified data area
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000069.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000069.html');return false;">
+          <span class="method-name">cur_pos</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns the current cursor position
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000070.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000070.html');return false;">
+          <span class="method-name">cur_pos=</span><span class="method-args">(idx)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+set the cursor position to &#8216;idx&#8216;
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000084" class="method-detail">
+        <a name="M000084"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000084.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000084.html');return false;">
+          <span class="method-name">disp_ascii_byte</span><span class="method-args">(ch)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a single ascii character given its numeric value. If the character
+is non-printible, this method returns &#8217;.&#8217;
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000083" class="method-detail">
+        <a name="M000083"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000083.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000083.html');return false;">
+          <span class="method-name">disp_hex_byte</span><span class="method-args">(ch)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a two-character hex byte representation, always a gives a leading
+nibble.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000111" class="method-detail">
+        <a name="M000111"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000111.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000111.html');return false;">
+          <span class="method-name">do_clipboard_copy</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Implements the clipboard &#8216;copy&#8217; operation
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000112" class="method-detail">
+        <a name="M000112"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000112.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000112.html');return false;">
+          <span class="method-name">do_clipboard_cut</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Implements the clipboard &#8216;cut&#8217; operation (calls <a
+href="EditWindow.html#M000111">do_clipboard_copy</a> under the hood &#8212;
+then deletes the selection if it was successful)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000113" class="method-detail">
+        <a name="M000113"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000113.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000113.html');return false;">
+          <span class="method-name">do_clipboard_paste</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Implements the clipboard &#8216;paste&#8217; operation
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000110" class="method-detail">
+        <a name="M000110"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000110.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000110.html');return false;">
+          <span class="method-name">do_select_all</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Selects all data loaded in the hex editor. like doing select all in a text
+editor.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000087.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000087.html');return false;">
+          <span class="method-name">expand_selection</span><span class="method-args">(idx)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Used internally to expand selections from mouse dragging or shift+arrow
+cursor movement.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000094" class="method-detail">
+        <a name="M000094"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000094.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000094.html');return false;">
+          <span class="method-name">gui_set_value</span><span class="method-args">(idx, val, force_overwrite=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets a value at the given index, or if a selection is active, overwrites
+the selection area with the value. For non-selection edits, the insert-mode
+flag is checked to determine whether to overwrite or insert at the index.
+</p>
+<p>
+Parameters:
+</p>
+<pre>
+  idx : The index to the data where the value is set.
+        (The idx parameter is ignored in selection overwrites.)
+  val : The value to set at @data[idx]
+        Value can be zero-length in which-case the area or index
+        is deleted.
+  force_overwrite : Causes the @data[idx] to be overwritten regardless
+        of the insert-mode flag.
+</pre>
+<p>
+Returns: the index where the change was made.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000074.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000074.html');return false;">
+          <span class="method-name">init_font</span><span class="method-args">(font)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method initializes a <a href="EditWindow.html#M000066">new</a> font
+for the hexdump and determines text sizes. If it is called after the editor
+has been initialized, it will also update scrollbar information with the <a
+href="EditWindow.html#M000066">new</a> dimensions.
+</p>
+<p>
+This method is always called during initialization and is passed the
+default font or whatever is provided when calling <a
+href="EditWindow.html#M000066">new</a>().
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000067.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000067.html');return false;">
+          <span class="method-name">ins_mode</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000068.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000068.html');return false;">
+          <span class="method-name">ins_mode=</span><span class="method-args">(v)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000092" class="method-detail">
+        <a name="M000092"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000092.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000092.html');return false;">
+          <span class="method-name">move_cursor_down</span><span class="method-args">(expand_sel=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000091" class="method-detail">
+        <a name="M000091"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000091.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000091.html');return false;">
+          <span class="method-name">move_cursor_left</span><span class="method-args">(expand_sel=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000090" class="method-detail">
+        <a name="M000090"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000090.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000090.html');return false;">
+          <span class="method-name">move_cursor_right</span><span class="method-args">(expand_sel=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000093" class="method-detail">
+        <a name="M000093"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000093.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000093.html');return false;">
+          <span class="method-name">move_cursor_up</span><span class="method-args">(expand_sel=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000089" class="method-detail">
+        <a name="M000089"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000089.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000089.html');return false;">
+          <span class="method-name">move_to_idx</span><span class="method-args">(idx, adj=nil, expand_sel=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method implements cursor movement
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000096" class="method-detail">
+        <a name="M000096"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000096.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000096.html');return false;">
+          <span class="method-name">on_char</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Keyboard event handler.
+</p>
+<p>
+Key-presses with ASCII values are deferred to evt_char for correct
+translation via the key-press event. However, character-specific handlers
+using key modifiers (alt, shift, cmd) are honored and override the evt_char
+handler.
+</p>
+<p>
+The resolver looks up key names and calls matching char-specific handlers
+by name if they are defined.
+</p>
+<p>
+See <a
+href="http://wxruby.rubyforge.org/doc/keycode.html#keycodes">wxruby.rubyforge.org/doc/keycode.html#keycodes</a>
+for a list of key names.
+</p>
+<p>
+This method is not designed for calling directly.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000102" class="method-detail">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000102.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000102.html');return false;">
+          <span class="method-name">on_char_ascii</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handles editor entry actions made in the ascii section.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000103" class="method-detail">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000103.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000103.html');return false;">
+          <span class="method-name">on_char_hex</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handles editor entry actions made in the hex section.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000071" class="method-detail">
+        <a name="M000071"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000071.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000071.html');return false;">
+          <span class="method-name">on_create</span><span class="method-args">(evt=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Triggered when the window is first created. Establishes dimensions (by
+calling <a href="EditWindow.html#M000075">update_dimensions</a>) along with
+various associated instance variables.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000073.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000073.html');return false;">
+          <span class="method-name">on_get_line_height</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is required by the Wx::VScrolledWindow super-class which calls
+it to determine the size of scroll units for the scrollbar at a given line.
+We just return our @row_height for all lines (which is calculated from
+do_row_count() ). Returns -1 if for some reason the row height has not been
+calculated.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000076.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000076.html');return false;">
+          <span class="method-name">on_idle</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+An idle event handler for Wx::IdleEvent. Keeps track of data changes and
+cursor movements and produces the appropriate events for them. See also: <a
+href="CursorMoveEvent.html">CursorMoveEvent</a> and <a
+href="DataChangeEvent.html">DataChangeEvent</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000097" class="method-detail">
+        <a name="M000097"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000097.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000097.html');return false;">
+          <span class="method-name">on_key_back</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handles a Backspace keypress
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000098" class="method-detail">
+        <a name="M000098"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000098.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000098.html');return false;">
+          <span class="method-name">on_key_delete</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handles a DEL keypress
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000109" class="method-detail">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000109.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000109.html');return false;">
+          <span class="method-name">on_key_tab</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handles a &#8216;tab&#8217; keypress. Switches between hex/ascii areas
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000106" class="method-detail">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000106.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000106.html');return false;">
+          <span class="method-name">on_left_button_down</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handles a left mouse button click
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000107" class="method-detail">
+        <a name="M000107"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000107.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000107.html');return false;">
+          <span class="method-name">on_left_button_up</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handles a left mouse button release
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000108" class="method-detail">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000108.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000108.html');return false;">
+          <span class="method-name">on_mouse_motion</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handles mouse motion - skips if left mouse button is not down
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000078" class="method-detail">
+        <a name="M000078"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000078.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000078.html');return false;">
+          <span class="method-name">on_paint</span><span class="method-args">(dc)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method does the heavy lifting in drawing the hex editor dump window.
+Takes a &#8216;dc&#8217; device context parameter
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000072.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000072.html');return false;">
+          <span class="method-name">on_size</span><span class="method-args">(evt=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Triggered whenever the window size changes. Updates dimensions and keeps
+the scroll bar in place.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000080" class="method-detail">
+        <a name="M000080"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000080.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000080.html');return false;">
+          <span class="method-name">paint_boundaries</span><span class="method-args">(dc)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is called from the <a
+href="EditWindow.html#M000078">on_paint</a> method to draw bounding lines
+on 4-byte word boundaries and between the address/hex/ascii columns
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000082" class="method-detail">
+        <a name="M000082"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000082.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000082.html');return false;">
+          <span class="method-name">paint_cursor</span><span class="method-args">(dc)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Called from the <a href="EditWindow.html#M000078">on_paint</a> method to
+draw the editor cursor
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000079" class="method-detail">
+        <a name="M000079"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000079.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000079.html');return false;">
+          <span class="method-name">paint_row</span><span class="method-args">(dc, y, addr, row_num)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is called from the <a
+href="EditWindow.html#M000078">on_paint</a> method to draw a row for each
+hexdump row in the display
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000095" class="method-detail">
+        <a name="M000095"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000095.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000095.html');return false;">
+          <span class="method-name">resolve_key_code</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Takes a key code parameter and looks it up against constants to return a
+&#8216;name&#8217; if one is found.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000085" class="method-detail">
+        <a name="M000085"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000085.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000085.html');return false;">
+          <span class="method-name">scroll_to_idx</span><span class="method-args">(idx)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+moves the scroll-bar so that it includes the row for the specified data
+index
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000086" class="method-detail">
+        <a name="M000086"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000086.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000086.html');return false;">
+          <span class="method-name">select_range</span><span class="method-args">(rng)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000100" class="method-detail">
+        <a name="M000100"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000100.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000100.html');return false;">
+          <span class="method-name">set_area_ascii</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000101" class="method-detail">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000101.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000101.html');return false;">
+          <span class="method-name">set_area_hex</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000077" class="method-detail">
+        <a name="M000077"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000077.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000077.html');return false;">
+          <span class="method-name">set_data</span><span class="method-args">(data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Use this method to set a <a href="EditWindow.html#M000066">new</a> internal
+data value from outside the class. Doing so should keep all the furniture
+aranged correctly.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000099" class="method-detail">
+        <a name="M000099"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000099.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000099.html');return false;">
+          <span class="method-name">switch_areas</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+switches the cursor between hex and ascii area
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+          <a href="EditWindow.src/M000075.html" target="Code" class="method-signature"
+            onclick="popupCode('EditWindow.src/M000075.html');return false;">
+          <span class="method-name">update_dimensions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method must be called on initialization, on size events, and whenever
+the size of data contents has changed.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

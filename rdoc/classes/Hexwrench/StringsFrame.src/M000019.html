@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Hexwrench::StringsFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/hexwrench/stringsgrid.rb, line 7</span>
+ 7:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">data</span>, <span class="ruby-identifier">strings_opts</span>=<span class="ruby-keyword kw">nil</span>)
+ 8:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Strings&quot;</span>)
+ 9:       <span class="ruby-ivar">@grid</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Grid</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+10: 
+11:       <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">data</span>
+12:       <span class="ruby-ivar">@strings_opts</span> =(<span class="ruby-identifier">strings_opts</span> <span class="ruby-operator">||</span> {})
+13:       <span class="ruby-ivar">@strings_opts</span>[<span class="ruby-identifier">:font</span>] <span class="ruby-operator">||=</span> 
+14:         <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">10</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MODERN</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">NORMAL</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">NORMAL</span>)
+15: 
+16:       <span class="ruby-identifier">make_grid</span>()
+17:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

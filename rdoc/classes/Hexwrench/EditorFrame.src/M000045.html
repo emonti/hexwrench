@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>do_open_file (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 284</span>
+284:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">do_open_file</span>(<span class="ruby-identifier">filename</span>)
+285:       <span class="ruby-identifier">dat</span>=<span class="ruby-keyword kw">nil</span>
+286:       <span class="ruby-keyword kw">begin</span>
+287:         <span class="ruby-identifier">dat</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">filename</span>)
+288:       <span class="ruby-keyword kw">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+289:         <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>,
+290:           <span class="ruby-identifier">:caption</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Error Opening File&quot;</span>,
+291:           <span class="ruby-identifier">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{e.class} - #{e.to_s}&quot;</span>
+292:         ).<span class="ruby-identifier">show_modal</span>
+293:       <span class="ruby-keyword kw">end</span>
+294:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dat</span>
+295:         <span class="ruby-identifier">set_filename</span>(<span class="ruby-identifier">filename</span>)
+296:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">set_data</span>(<span class="ruby-identifier">dat</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dat</span>
+297:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">move_to_idx</span>(<span class="ruby-value">0</span>)
+298:         <span class="ruby-ivar">@new_buffer</span>=<span class="ruby-keyword kw">true</span>
+299:       <span class="ruby-keyword kw">end</span>
+300:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

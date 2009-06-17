@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Hexwrench::StringsList)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/hexwrench/stringslist.rb, line 53</span>
+53:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">editor</span>, <span class="ruby-identifier">strings_opts</span>=<span class="ruby-keyword kw">nil</span>)
+54:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@editor</span> = <span class="ruby-identifier">editor</span>
+55:         <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{self.class}.new() requires an editor window parameter&quot;</span>
+56:       <span class="ruby-keyword kw">end</span>
+57: 
+58:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">:style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">LC_REPORT</span><span class="ruby-operator">|</span><span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">LC_SINGLE_SEL</span><span class="ruby-operator">|</span><span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">LC_HRULES</span><span class="ruby-operator">|</span><span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">LC_VRULES</span>)
+59:       <span class="ruby-identifier">insert_column</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;start&quot;</span>)
+60:       <span class="ruby-identifier">insert_column</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;len&quot;</span>)
+61:       <span class="ruby-identifier">insert_column</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;kind&quot;</span>)
+62:       <span class="ruby-identifier">insert_column</span>(<span class="ruby-value">3</span>, <span class="ruby-value str">&quot;string&quot;</span>)
+63: 
+64:       <span class="ruby-ivar">@strings_opts</span> = (<span class="ruby-identifier">strings_opts</span> <span class="ruby-operator">||</span> {})
+65:       <span class="ruby-ivar">@strings_opts</span>[<span class="ruby-identifier">:encoding</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">:both</span>
+66: 
+67:       <span class="ruby-ivar">@font</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">10</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MODERN</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">NORMAL</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">NORMAL</span>)
+68:       <span class="ruby-identifier">set_font</span>(<span class="ruby-ivar">@font</span>)
+69:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

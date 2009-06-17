@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_mouse_motion (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 817</span>
+817:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_mouse_motion</span>(<span class="ruby-identifier">evt</span>)
+818:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">left_is_down</span>()
+819:         <span class="ruby-ivar">@dragging</span> = <span class="ruby-keyword kw">true</span>
+820:         <span class="ruby-identifier">x</span>=<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_x</span> ; <span class="ruby-identifier">y</span>=<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_y</span> 
+821:         <span class="ruby-identifier">idx</span>=<span class="ruby-identifier">coords_to_idx</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>, <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">area</span>)
+822:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">idx</span> 
+823:           <span class="ruby-identifier">idx</span> = <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">size</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">idx</span>]
+824:           <span class="ruby-ivar">@last_pos</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span>
+825:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span> = <span class="ruby-identifier">idx</span>
+826:           <span class="ruby-identifier">expand_selection</span>(<span class="ruby-identifier">idx</span>)
+827:           <span class="ruby-identifier">refresh</span>
+828:         <span class="ruby-keyword kw">end</span>
+829:       <span class="ruby-keyword kw">else</span>
+830:         <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">skip</span>()
+831:         <span class="ruby-keyword kw">return</span>
+832:       <span class="ruby-keyword kw">end</span>
+833:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

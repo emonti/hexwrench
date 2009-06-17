@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>do_search (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 189</span>
+189:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">do_search</span>(<span class="ruby-identifier">val</span>, <span class="ruby-identifier">kind</span>)
+190:       <span class="ruby-identifier">pos</span> = <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">cur_pos</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+191:       <span class="ruby-keyword kw">if</span> ( 
+192:           ( (<span class="ruby-identifier">kind</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:ascii</span>) <span class="ruby-keyword kw">or</span> (<span class="ruby-identifier">kind</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:hex</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">val</span>=<span class="ruby-identifier">unhexify</span>(<span class="ruby-identifier">val</span>)) ) <span class="ruby-keyword kw">and</span> 
+193:           ( <span class="ruby-identifier">dat</span> = <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">data</span>[<span class="ruby-identifier">pos</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]) <span class="ruby-keyword kw">and</span>
+194:           ( <span class="ruby-identifier">idx</span> = <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">data</span>[<span class="ruby-identifier">pos</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">index</span>(<span class="ruby-identifier">val</span>) ) 
+195:          )
+196: 
+197:         <span class="ruby-identifier">idx</span><span class="ruby-operator">+=</span><span class="ruby-identifier">pos</span>
+198:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">select_range</span>(<span class="ruby-identifier">idx</span><span class="ruby-operator">..</span><span class="ruby-identifier">idx</span><span class="ruby-operator">+</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+199:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">scroll_to_idx</span>(<span class="ruby-identifier">idx</span>)
+200:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;set_area_#{kind.to_s}&quot;</span>)
+201:         <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">refresh</span>
+202:       <span class="ruby-keyword kw">else</span>
+203:         <span class="ruby-ivar">@util_search</span>.<span class="ruby-identifier">do_error</span>
+204:       <span class="ruby-keyword kw">end</span>
+205:       <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">set_focus</span>
+206:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

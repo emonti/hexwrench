@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Hexwrench::UtilTextCtrl</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Hexwrench::UtilTextCtrl</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/hexwrench/edit_frame_rb.html">
+                lib/hexwrench/edit_frame.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+This module is used to extend a regular Wx::TextCtrl text box to display
+greyed out text when idle which describes the control&#8216;s purpose. As
+soon as focus is set on the control, the text disappears.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000004">clear_error</a>&nbsp;&nbsp;
+      <a href="#M000002">do_default_text</a>&nbsp;&nbsp;
+      <a href="#M000003">do_error</a>&nbsp;&nbsp;
+      <a href="#M000001">init</a>&nbsp;&nbsp;
+      <a href="#M000006">on_kill_focus</a>&nbsp;&nbsp;
+      <a href="#M000005">on_set_focus</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="UtilTextCtrl.src/M000004.html" target="Code" class="method-signature"
+            onclick="popupCode('UtilTextCtrl.src/M000004.html');return false;">
+          <span class="method-name">clear_error</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Clears error text set by <a href="UtilTextCtrl.html#M000003">do_error</a>
+and returns the textbox to its default text display.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="UtilTextCtrl.src/M000002.html" target="Code" class="method-signature"
+            onclick="popupCode('UtilTextCtrl.src/M000002.html');return false;">
+          <span class="method-name">do_default_text</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns text to its greyed-out default display
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="UtilTextCtrl.src/M000003.html" target="Code" class="method-signature"
+            onclick="popupCode('UtilTextCtrl.src/M000003.html');return false;">
+          <span class="method-name">do_error</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Indicates an error in the text box by turning current text red.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="UtilTextCtrl.src/M000001.html" target="Code" class="method-signature"
+            onclick="popupCode('UtilTextCtrl.src/M000001.html');return false;">
+          <span class="method-name">init</span><span class="method-args">(opts={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This <a href="UtilTextCtrl.html#M000001">init</a> method is called after
+creation since we don&#8216;t override &#8216;new&#8217; in the XRC derived
+window element. Takes a hash of :name =&gt; value options. The only option
+is currently :default_text, which is the text to display when the control
+is idle. If :default_text is not specified, the control will use the
+initial value in the text box as default text.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="UtilTextCtrl.src/M000006.html" target="Code" class="method-signature"
+            onclick="popupCode('UtilTextCtrl.src/M000006.html');return false;">
+          <span class="method-name">on_kill_focus</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Event handler for when focus is lost to this text control. Returns the text
+to its default display unless an error in input was flagged.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="UtilTextCtrl.src/M000005.html" target="Code" class="method-signature"
+            onclick="popupCode('UtilTextCtrl.src/M000005.html');return false;">
+          <span class="method-name">on_set_focus</span><span class="method-args">(evt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Event handler for when focus is set to this text control. Clears default
+text in preparation for user input.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_left_button_down (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 775</span>
+775:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_left_button_down</span>(<span class="ruby-identifier">evt</span>)
+776:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">left_is_down</span>()
+777:         <span class="ruby-ivar">@hexbyte_started</span> = <span class="ruby-keyword kw">false</span>
+778:         <span class="ruby-identifier">set_focus</span>()
+779:         <span class="ruby-identifier">x</span>=<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_x</span> ; <span class="ruby-identifier">y</span>=<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_y</span> 
+780:         <span class="ruby-keyword kw">if</span> ( <span class="ruby-ivar">@dragging</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">shift_down</span> ) 
+781:           <span class="ruby-keyword kw">if</span> ( <span class="ruby-identifier">idx</span>=<span class="ruby-identifier">coords_to_idx</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>, <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">area</span>) )
+782:             <span class="ruby-identifier">expand_selection</span>(<span class="ruby-identifier">idx</span>)
+783:             <span class="ruby-identifier">refresh</span>
+784:           <span class="ruby-keyword kw">end</span>
+785:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">area</span>=<span class="ruby-identifier">area_for_x</span>(<span class="ruby-identifier">x</span>)
+786:           <span class="ruby-identifier">switch_areas</span>() <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">area</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">area</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-constant">AREAS</span>[<span class="ruby-identifier">area</span>].<span class="ruby-identifier">nil?</span>
+787:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">idx</span>=<span class="ruby-identifier">coords_to_idx</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>, <span class="ruby-identifier">area</span>)
+788:             <span class="ruby-identifier">clear_selection</span>()
+789:             <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">area</span> = <span class="ruby-identifier">area</span>
+790:             <span class="ruby-ivar">@last_pos</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span> = (<span class="ruby-identifier">idx</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">size</span>)<span class="ruby-operator">?</span> <span class="ruby-identifier">idx</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">size</span>
+791:           <span class="ruby-keyword kw">end</span>
+792:           <span class="ruby-identifier">refresh</span>
+793:         <span class="ruby-keyword kw">end</span>
+794:       <span class="ruby-keyword kw">else</span>
+795:         <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">skip</span>()
+796:         <span class="ruby-keyword kw">return</span>
+797:       <span class="ruby-keyword kw">end</span>
+798:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

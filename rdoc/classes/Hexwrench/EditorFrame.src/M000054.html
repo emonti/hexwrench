@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_menu_data_inspector (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 384</span>
+384:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_menu_data_inspector</span>(<span class="ruby-identifier">evt</span>)
+385:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@d_inspector</span>
+386:         <span class="ruby-ivar">@d_inspector</span>.<span class="ruby-identifier">destroy</span>()
+387:         <span class="ruby-ivar">@d_inspector</span> = <span class="ruby-keyword kw">nil</span>
+388:       <span class="ruby-keyword kw">else</span>
+389:         <span class="ruby-ivar">@d_inspector</span> = <span class="ruby-constant">DataInspector</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:editor</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@editor</span>)
+390:         <span class="ruby-ivar">@d_inspector</span>.<span class="ruby-identifier">accelerator_table</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">accelerator_table</span> <span class="ruby-comment cmt"># clone hotkeys</span>
+391:         <span class="ruby-ivar">@d_inspector</span>.<span class="ruby-identifier">evt_window_destroy</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@d_inspector</span>=<span class="ruby-keyword kw">nil</span>; <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">skip</span>() }
+392:         <span class="ruby-ivar">@d_inspector</span>.<span class="ruby-identifier">do_inspectors</span>
+393:         <span class="ruby-ivar">@d_inspector</span>.<span class="ruby-identifier">show</span>
+394:       <span class="ruby-keyword kw">end</span>
+395:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

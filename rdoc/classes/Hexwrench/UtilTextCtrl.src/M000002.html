@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>do_default_text (Hexwrench::UtilTextCtrl)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 456</span>
+456:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">do_default_text</span>
+457:       <span class="ruby-ivar">@error</span> = <span class="ruby-keyword kw">false</span>
+458:       <span class="ruby-identifier">clear</span>()
+459:       <span class="ruby-identifier">set_default_style</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">TextAttr</span>.<span class="ruby-identifier">new</span>( <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">LIGHT_GREY</span>) )
+460:       <span class="ruby-identifier">set_value</span>(<span class="ruby-ivar">@dflt_text</span>)
+461:       <span class="ruby-identifier">set_default_style</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">TextAttr</span>.<span class="ruby-identifier">new</span>( <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>) )
+462:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

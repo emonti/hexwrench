@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>expand_selection (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 458</span>
+458:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expand_selection</span>(<span class="ruby-identifier">idx</span>)
+459:       <span class="ruby-ivar">@selection</span> = 
+460:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@last_pos</span>
+461:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">idx</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@last_pos</span>
+462:             (<span class="ruby-identifier">idx</span><span class="ruby-operator">..</span><span class="ruby-ivar">@last_pos</span>)
+463:           <span class="ruby-keyword kw">else</span>
+464:             (<span class="ruby-ivar">@last_pos</span><span class="ruby-operator">..</span><span class="ruby-identifier">idx</span>)
+465:           <span class="ruby-keyword kw">end</span>
+466:         <span class="ruby-keyword kw">end</span>
+467:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

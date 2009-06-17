@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>do_strings (Hexwrench::StringsList)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/stringslist.rb, line 76</span>
+ 76:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">do_strings</span>
+ 77:       <span class="ruby-identifier">gauge</span> = 
+ 78:         <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">ProgressDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-value str">&quot;Generating Strings&quot;</span>,
+ 79:           <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">data</span>.<span class="ruby-identifier">size</span>, <span class="ruby-keyword kw">self</span>, <span class="ruby-constant">GAUGE_STYLE</span>)
+ 80: 
+ 81:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hide</span>
+ 82:       <span class="ruby-identifier">delete_all_items</span>
+ 83:       <span class="ruby-identifier">i</span>=<span class="ruby-value">0</span>
+ 84:       <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">data</span>.<span class="ruby-identifier">strings</span>(<span class="ruby-ivar">@strings_opts</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">startoff</span>, <span class="ruby-identifier">endoff</span>, <span class="ruby-identifier">stype</span>, <span class="ruby-identifier">str</span><span class="ruby-operator">|</span>
+ 85:         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">gauge</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">endoff</span>)
+ 86:           <span class="ruby-comment cmt"># the &quot;abort&quot; button was pressed</span>
+ 87:           <span class="ruby-identifier">destroy</span>
+ 88:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+ 89:         <span class="ruby-keyword kw">end</span>
+ 90:         <span class="ruby-identifier">d_str</span> = ((<span class="ruby-identifier">stype</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:unicode</span>)<span class="ruby-operator">?</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/(.)\x00/</span>){<span class="ruby-identifier">$1</span>} <span class="ruby-operator">:</span> <span class="ruby-identifier">str</span>).<span class="ruby-identifier">inspect</span>
+ 91:         <span class="ruby-identifier">insert_item</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">startoff</span>.<span class="ruby-identifier">to_s</span>)
+ 92:         <span class="ruby-identifier">set_item</span> <span class="ruby-identifier">i</span>, <span class="ruby-value">1</span>, (<span class="ruby-identifier">endoff</span><span class="ruby-operator">-</span><span class="ruby-identifier">startoff</span>).<span class="ruby-identifier">to_s</span>
+ 93:         <span class="ruby-identifier">set_item</span> <span class="ruby-identifier">i</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">stype</span>.<span class="ruby-identifier">to_s</span>
+ 94:         <span class="ruby-identifier">set_item</span> <span class="ruby-identifier">i</span>, <span class="ruby-value">3</span>, <span class="ruby-identifier">d_str</span>
+ 95:         <span class="ruby-identifier">set_item_data</span>(<span class="ruby-identifier">i</span>, [<span class="ruby-identifier">startoff</span>, <span class="ruby-identifier">endoff</span>, <span class="ruby-identifier">stype</span>])
+ 96:         <span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+ 97:       <span class="ruby-keyword kw">end</span>
+ 98: 
+ 99:       <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-value">3</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">set_column_width</span> <span class="ruby-identifier">c</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">LIST_AUTOSIZE</span> } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+100:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">show</span>
+101:       <span class="ruby-identifier">gauge</span>.<span class="ruby-identifier">destroy</span>()
+102:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">i</span>
+103:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

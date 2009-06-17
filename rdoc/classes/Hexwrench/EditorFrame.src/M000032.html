@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>update_status_bar (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 143</span>
+143:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_status_bar</span>
+144:       <span class="ruby-identifier">set_status_text</span>(<span class="ruby-node">&quot;Offset: #{@editor.cur_pos}/#{@editor.data.size}&quot;</span>, <span class="ruby-value">0</span>)
+145: 
+146:       <span class="ruby-identifier">sel_txt</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sel</span>=<span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">selection</span>
+147:                   <span class="ruby-node">&quot;#{sel.last-sel.first+1} bytes (#{sel})&quot;</span>
+148:                 <span class="ruby-keyword kw">else</span>
+149:                   <span class="ruby-value str">&quot;nil&quot;</span>
+150:                 <span class="ruby-keyword kw">end</span>
+151: 
+152:       <span class="ruby-identifier">set_status_text</span>(<span class="ruby-node">&quot;Selection: #{sel_txt}&quot;</span>, <span class="ruby-value">1</span>)
+153:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

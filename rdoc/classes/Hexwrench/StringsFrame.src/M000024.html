@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Hexwrench::StringsFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/hexwrench/stringsvlist.rb, line 8</span>
+ 8:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">editor</span>, <span class="ruby-identifier">strings_opts</span>=<span class="ruby-keyword kw">nil</span>)
+ 9:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@editor</span> = <span class="ruby-identifier">editor</span>
+10:         <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{self.class}.new() requires an editor window parameter&quot;</span>
+11:       <span class="ruby-keyword kw">end</span>
+12: 
+13:       <span class="ruby-ivar">@strings_opts</span> = (<span class="ruby-identifier">strings_opts</span> <span class="ruby-operator">||</span> {})
+14:       <span class="ruby-ivar">@strings_opts</span>[<span class="ruby-identifier">:min</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">5</span>
+15: 
+16:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Strings&quot;</span>)
+17: 
+18:       <span class="ruby-comment cmt"># Fire our strings operation only on switching windows (via activation)</span>
+19:       <span class="ruby-comment cmt"># we do this because finding strings (to a lesser extent) and </span>
+20:       <span class="ruby-comment cmt"># populating the window (to a larger extent) may be a costly operation</span>
+21:       <span class="ruby-identifier">evt_idle</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> 
+22:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@data_changed</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">active?</span>
+23:           <span class="ruby-ivar">@data_changed</span>=<span class="ruby-keyword kw">false</span>
+24:           <span class="ruby-identifier">do_strings</span> 
+25:         <span class="ruby-keyword kw">end</span>
+26:       <span class="ruby-keyword kw">end</span>
+27: 
+28:       <span class="ruby-identifier">do_strings</span>
+29:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

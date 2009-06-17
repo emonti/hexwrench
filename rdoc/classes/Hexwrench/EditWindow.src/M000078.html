@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_paint (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 239</span>
+239:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_paint</span>(<span class="ruby-identifier">dc</span>)
+240:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@started</span>
+241:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_font</span>(<span class="ruby-ivar">@font</span>)
+242:       <span class="ruby-identifier">first_row</span> = <span class="ruby-identifier">row</span> = <span class="ruby-identifier">get_first_visible_line</span>
+243:       <span class="ruby-identifier">last_row</span> = <span class="ruby-identifier">get_last_visible_line</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+244:       <span class="ruby-identifier">y</span> = <span class="ruby-value">0</span>
+245:       <span class="ruby-identifier">hX</span> = <span class="ruby-ivar">@hex0</span>
+246:       <span class="ruby-identifier">aX</span> = <span class="ruby-ivar">@asc0</span>
+247:       <span class="ruby-identifier">idx</span> = (<span class="ruby-identifier">row</span>.<span class="ruby-identifier">zero?</span>)<span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@columns</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">row</span>
+248: 
+249:       <span class="ruby-identifier">hex_w</span> = <span class="ruby-ivar">@hex_width</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@asc_width</span>
+250:       <span class="ruby-identifier">h_off</span> = <span class="ruby-ivar">@hex_width</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
+251: 
+252:       <span class="ruby-comment cmt"># draw blank background</span>
+253:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_pen</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">TRANSPARENT_PEN</span>)
+254:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_brush</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Brush</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@bg_color</span>))
+255:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_rectangle</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">client_size</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">client_size</span>.<span class="ruby-identifier">height</span>)
+256: 
+257:       <span class="ruby-identifier">paint_row</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">idx</span>, <span class="ruby-identifier">row</span>)
+258: 
+259:       <span class="ruby-keyword kw">while</span>(<span class="ruby-identifier">c</span>=<span class="ruby-ivar">@data</span>[<span class="ruby-identifier">idx</span>]) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">last_row</span>
+260:         <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">hX</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@hexN</span>)
+261:           <span class="ruby-identifier">hX</span> = <span class="ruby-ivar">@hex0</span>
+262:           <span class="ruby-identifier">aX</span> = <span class="ruby-ivar">@asc0</span>
+263:           <span class="ruby-identifier">y</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@txt_height</span>
+264:           <span class="ruby-identifier">row</span> <span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+265:           <span class="ruby-identifier">paint_row</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">idx</span>, <span class="ruby-identifier">row</span>)
+266:         <span class="ruby-keyword kw">end</span>
+267: 
+268:         <span class="ruby-comment cmt"># call byte colorization block if we have one</span>
+269:         <span class="ruby-identifier">text_color</span> =
+270:           <span class="ruby-keyword kw">if</span>( <span class="ruby-ivar">@post_paint_proc</span> <span class="ruby-keyword kw">and</span>
+271:               <span class="ruby-identifier">bret</span>=<span class="ruby-ivar">@post_paint_proc</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>,<span class="ruby-identifier">dc</span>,<span class="ruby-identifier">idx</span>,<span class="ruby-identifier">c</span>,<span class="ruby-identifier">hX</span><span class="ruby-operator">+</span><span class="ruby-identifier">h_off</span>,<span class="ruby-identifier">aX</span>,<span class="ruby-identifier">y</span>) )
+272:             <span class="ruby-identifier">bret</span>
+273:           <span class="ruby-keyword kw">else</span>
+274:             <span class="ruby-ivar">@dump_color</span>
+275:           <span class="ruby-keyword kw">end</span>
+276: 
+277:         <span class="ruby-comment cmt"># selection stuff goes here</span>
+278:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@selection</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@selection</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">idx</span>)
+279:           <span class="ruby-identifier">sbrushes</span> = [
+280:             <span class="ruby-ivar">@select_bgs</span>[ <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">area</span> ],
+281:             <span class="ruby-ivar">@select_bgs</span>[ (<span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">area</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>) <span class="ruby-operator">%</span> <span class="ruby-constant">AREAS</span>.<span class="ruby-identifier">size</span> ]
+282:           ]
+283:           <span class="ruby-identifier">colorize_byte_bg</span>(<span class="ruby-identifier">sbrushes</span>, <span class="ruby-identifier">dc</span>, <span class="ruby-identifier">hX</span><span class="ruby-operator">+</span><span class="ruby-identifier">h_off</span>, <span class="ruby-identifier">aX</span>, <span class="ruby-identifier">y</span>)
+284:         <span class="ruby-keyword kw">end</span>
+285: 
+286:         <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_text_foreground</span>(<span class="ruby-identifier">text_color</span>)
+287:         <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_text</span>(<span class="ruby-node">&quot;#{disp_hex_byte(c)}&quot;</span>, <span class="ruby-identifier">hX</span><span class="ruby-operator">+</span><span class="ruby-identifier">h_off</span>, <span class="ruby-identifier">y</span>)
+288:         <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_text</span>(<span class="ruby-node">&quot;#{disp_ascii_byte(c)}&quot;</span>, <span class="ruby-identifier">aX</span>, <span class="ruby-identifier">y</span>)
+289: 
+290:         <span class="ruby-identifier">hX</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">hex_w</span>
+291:         <span class="ruby-identifier">aX</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@asc_width</span>
+292:         <span class="ruby-identifier">idx</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+293:       <span class="ruby-keyword kw">end</span>
+294: 
+295:       <span class="ruby-identifier">paint_boundaries</span>(<span class="ruby-identifier">dc</span>)
+296:       <span class="ruby-identifier">paint_cursor</span>(<span class="ruby-identifier">dc</span>)
+297:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_menu_console (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 399</span>
+399:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_menu_console</span>(<span class="ruby-identifier">evt</span>)
+400:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">HAVE_WXIRB</span>
+401:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$wxirb</span>
+402:         <span class="ruby-identifier">$wxirb</span>.<span class="ruby-identifier">destroy</span>()
+403:         <span class="ruby-identifier">$wxirb</span> = <span class="ruby-keyword kw">nil</span>
+404:       <span class="ruby-keyword kw">else</span>
+405:         <span class="ruby-identifier">$wxirb</span> = <span class="ruby-constant">WxIRB</span><span class="ruby-operator">::</span><span class="ruby-constant">BaseFrame</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:binding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">binding</span>)
+406:         <span class="ruby-identifier">$wxirb</span>.<span class="ruby-identifier">accelerator_table</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">accelerator_table</span> <span class="ruby-comment cmt"># clone hotkeys</span>
+407:         <span class="ruby-identifier">$wxirb</span>.<span class="ruby-identifier">evt_window_destroy</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">$wxirb</span>=<span class="ruby-keyword kw">nil</span>; <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">skip</span>() }
+408:         <span class="ruby-identifier">$wxirb</span>.<span class="ruby-identifier">show</span>
+409:       <span class="ruby-keyword kw">end</span>
+410:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

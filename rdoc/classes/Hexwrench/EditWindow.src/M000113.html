@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>do_clipboard_paste (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 896</span>
+896:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">do_clipboard_paste</span>
+897:       <span class="ruby-identifier">dat</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">PLATFORM</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;WXMAC&quot;</span> 
+898:         <span class="ruby-comment cmt"># XXX i feel dirty</span>
+899:          <span class="ruby-value">`pbpaste`</span>
+900:         <span class="ruby-keyword kw">else</span>
+901:           <span class="ruby-identifier">dobj</span>=<span class="ruby-constant">RawDataObject</span>.<span class="ruby-identifier">new</span>
+902:           <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Clipboard</span>.<span class="ruby-identifier">open</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">clip</span><span class="ruby-operator">|</span> <span class="ruby-identifier">clip</span>.<span class="ruby-identifier">fetch</span> <span class="ruby-identifier">dobj</span>}
+903:           <span class="ruby-identifier">dobj</span>.<span class="ruby-identifier">raw_data</span>
+904:         <span class="ruby-keyword kw">end</span>
+905: 
+906:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">gui_set_value</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span>, <span class="ruby-identifier">dat</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dat</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">dat</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+907:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

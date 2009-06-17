@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Hexwrench::StringsFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/hexwrench/stringslist.rb, line 8</span>
+ 8:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">editor</span>, <span class="ruby-identifier">strings_opts</span>=<span class="ruby-keyword kw">nil</span>)
+ 9:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@editor</span> = <span class="ruby-identifier">editor</span>
+10:         <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{self.class}.new() requires an editor window parameter&quot;</span>
+11:       <span class="ruby-keyword kw">end</span>
+12: 
+13:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Strings&quot;</span>)
+14: 
+15:       <span class="ruby-ivar">@strings_list</span> = <span class="ruby-constant">StringsList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-ivar">@editor</span>, <span class="ruby-identifier">strings_opts</span>)
+16:       <span class="ruby-ivar">@strings_list</span>.<span class="ruby-identifier">evt_window_destroy</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> 
+17:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">destroy</span>() <span class="ruby-keyword kw">rescue</span> (<span class="ruby-constant">ObjectPreviouslyDeleted</span>)
+18:         <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">skip</span>(<span class="ruby-keyword kw">true</span>)
+19:       <span class="ruby-keyword kw">end</span>
+20: 
+21:       <span class="ruby-identifier">evt_list_item_selected</span>(<span class="ruby-ivar">@strings_list</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span>
+22:         <span class="ruby-identifier">s_off</span>, <span class="ruby-identifier">e_off</span>, <span class="ruby-identifier">kind</span>, <span class="ruby-identifier">str</span> = <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">item</span>.<span class="ruby-identifier">data</span>
+23:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">select_range</span>(<span class="ruby-identifier">s_off</span><span class="ruby-operator">..</span><span class="ruby-identifier">e_off</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+24:           <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">set_area_ascii</span>
+25:           <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">scroll_to_idx</span>(<span class="ruby-identifier">s_off</span>)
+26:           <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">refresh</span>
+27:         <span class="ruby-keyword kw">end</span>
+28:       <span class="ruby-keyword kw">end</span>
+29: 
+30: 
+31:       <span class="ruby-comment cmt"># Fire our strings operation only on switching (via activation)</span>
+32:       <span class="ruby-comment cmt"># we do this because strings is a costly operation</span>
+33:       <span class="ruby-identifier">evt_activate</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> 
+34:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@data_changed</span>
+35:           <span class="ruby-ivar">@data_changed</span>=<span class="ruby-keyword kw">false</span>
+36:           <span class="ruby-ivar">@strings_list</span>.<span class="ruby-identifier">do_strings</span> 
+37:         <span class="ruby-keyword kw">end</span>
+38:       <span class="ruby-keyword kw">end</span>
+39:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

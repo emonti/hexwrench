@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_close (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 172</span>
+172:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_close</span>(<span class="ruby-identifier">evt</span>)
+173:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@buffer_changed</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">confirm_discard_changes?</span>
+174:         <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">can_veto</span>=<span class="ruby-keyword kw">true</span>
+175:         <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">veto</span>(<span class="ruby-keyword kw">true</span>)
+176:       <span class="ruby-keyword kw">else</span>
+177:         <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">skip</span>(<span class="ruby-keyword kw">true</span>)
+178:       <span class="ruby-keyword kw">end</span>
+179:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

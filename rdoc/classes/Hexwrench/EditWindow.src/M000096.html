@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_char (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 593</span>
+593:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_char</span>(<span class="ruby-identifier">evt</span>)
+594:       <span class="ruby-identifier">ch</span> = <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_key_code</span>
+595:       <span class="ruby-identifier">mflag</span> = <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">modifiers</span>
+596: 
+597:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">ch</span>
+598:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">K_RIGHT</span>  <span class="ruby-operator">:</span> <span class="ruby-identifier">move_cursor_right</span>(<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">shift_down</span>)
+599:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">K_LEFT</span>   <span class="ruby-operator">:</span> <span class="ruby-identifier">move_cursor_left</span>(<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">shift_down</span>)
+600:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">K_DOWN</span>   <span class="ruby-operator">:</span> <span class="ruby-identifier">move_cursor_down</span>(<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">shift_down</span>)
+601:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">K_UP</span>     <span class="ruby-operator">:</span> <span class="ruby-identifier">move_cursor_up</span>(<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">shift_down</span>)
+602:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">K_BACK</span>   <span class="ruby-operator">:</span> <span class="ruby-identifier">on_key_back</span>(<span class="ruby-identifier">evt</span>)
+603:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">K_DELETE</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">on_key_delete</span>(<span class="ruby-identifier">evt</span>)
+604:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">K_TAB</span>    <span class="ruby-operator">:</span> <span class="ruby-identifier">on_key_tab</span>(<span class="ruby-identifier">evt</span>)
+605:       <span class="ruby-keyword kw">when</span> (<span class="ruby-identifier">mflag</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span> <span class="ruby-keyword kw">and</span> <span class="ruby-value">?a</span>) <span class="ruby-comment cmt"># select all</span>
+606:         <span class="ruby-identifier">do_select_all</span>
+607:       <span class="ruby-keyword kw">when</span> (<span class="ruby-identifier">mflag</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span> <span class="ruby-keyword kw">and</span> <span class="ruby-value">?c</span>) <span class="ruby-comment cmt"># copy</span>
+608:         <span class="ruby-identifier">do_clipboard_copy</span>
+609:       <span class="ruby-keyword kw">when</span> (<span class="ruby-identifier">mflag</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span> <span class="ruby-keyword kw">and</span> <span class="ruby-value">?x</span>) <span class="ruby-comment cmt"># cut</span>
+610:         <span class="ruby-identifier">do_clipboard_cut</span>
+611:       <span class="ruby-keyword kw">when</span> (<span class="ruby-identifier">mflag</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span> <span class="ruby-keyword kw">and</span> <span class="ruby-value">?v</span>) <span class="ruby-comment cmt"># paste</span>
+612:         <span class="ruby-identifier">do_clipboard_paste</span>
+613:       <span class="ruby-keyword kw">when</span> ((<span class="ruby-identifier">mflag</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_NONE</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">mflag</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_SHIFT</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-value">0x20</span><span class="ruby-operator">..</span><span class="ruby-value">0x7e</span>)
+614:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">area</span>
+615:           <span class="ruby-comment cmt"># redirect regular typing to on_char_AREANAME</span>
+616:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;on_char_#{AREAS[@cursor.area]}&quot;</span>, <span class="ruby-identifier">evt</span>)
+617:         <span class="ruby-keyword kw">end</span>
+618:       <span class="ruby-keyword kw">else</span>  <span class="ruby-comment cmt"># everything else is for dynamically handling key combo handlers</span>
+619:         <span class="ruby-identifier">m</span> = []
+620:         <span class="ruby-identifier">m</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'alt'</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">mflag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_ALT</span>) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+621:         <span class="ruby-identifier">m</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'cmd'</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">mflag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_CMD</span>) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+622:         <span class="ruby-identifier">m</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'shift'</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">mflag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MOD_SHIFT</span>) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+623:         <span class="ruby-identifier">mods</span> = (<span class="ruby-identifier">m</span>.<span class="ruby-identifier">empty?</span>)<span class="ruby-operator">?</span> <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'_'</span>)
+624: 
+625:         <span class="ruby-identifier">ch</span> = <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_key_code</span>
+626:         <span class="ruby-identifier">hex</span> = <span class="ruby-identifier">ch</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">16</span>).<span class="ruby-identifier">rjust</span>(<span class="ruby-value">2</span>,<span class="ruby-value str">'0'</span>)
+627:         <span class="ruby-identifier">meth</span>=<span class="ruby-keyword kw">nil</span>
+628: 
+629:         <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">n</span>=<span class="ruby-identifier">resolve_key_code</span>(<span class="ruby-identifier">ch</span>)) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;on_key#{mods}_#{n}&quot;</span>)
+630:           <span class="ruby-identifier">meth</span>=<span class="ruby-node">&quot;on_key#{mods}_#{n}&quot;</span>
+631:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;on_key#{mods}_0x#{hex}&quot;</span>)
+632:           <span class="ruby-identifier">meth</span>=<span class="ruby-node">&quot;on_key#{mods}_#{hex}&quot;</span>
+633:         <span class="ruby-keyword kw">end</span>
+634: 
+635:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">meth</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">ret</span>=<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-identifier">evt</span>)
+636:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">ret</span>
+637:         <span class="ruby-keyword kw">else</span>
+638:           <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">skip</span>()
+639:         <span class="ruby-keyword kw">end</span>
+640:       <span class="ruby-keyword kw">end</span>
+641:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

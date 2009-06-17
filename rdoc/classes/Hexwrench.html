@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Hexwrench</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Hexwrench</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/hexwrench/data_inspector_rb.html">
+                lib/hexwrench/data_inspector.rb
+                </a>
+        <br />
+                <a href="../files/lib/hexwrench/edit_frame_rb.html">
+                lib/hexwrench/edit_frame.rb
+                </a>
+        <br />
+                <a href="../files/lib/hexwrench/edit_window_rb.html">
+                lib/hexwrench/edit_window.rb
+                </a>
+        <br />
+                <a href="../files/lib/hexwrench/stringsgrid_rb.html">
+                lib/hexwrench/stringsgrid.rb
+                </a>
+        <br />
+                <a href="../files/lib/hexwrench/stringslist_rb.html">
+                lib/hexwrench/stringslist.rb
+                </a>
+        <br />
+                <a href="../files/lib/hexwrench/stringsvlist_rb.html">
+                lib/hexwrench/stringsvlist.rb
+                </a>
+        <br />
+                <a href="../files/lib/hexwrench_rb.html">
+                lib/hexwrench.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="Hexwrench/UtilTextCtrl.html" class="link">Hexwrench::UtilTextCtrl</a><br />
+Class <a href="Hexwrench/CursorMoveEvent.html" class="link">Hexwrench::CursorMoveEvent</a><br />
+Class <a href="Hexwrench/DataChangeEvent.html" class="link">Hexwrench::DataChangeEvent</a><br />
+Class <a href="Hexwrench/EditWindow.html" class="link">Hexwrench::EditWindow</a><br />
+Class <a href="Hexwrench/EditorFrame.html" class="link">Hexwrench::EditorFrame</a><br />
+Class <a href="Hexwrench/EditorFrameBase.html" class="link">Hexwrench::EditorFrameBase</a><br />
+Class <a href="Hexwrench/StringsFrame.html" class="link">Hexwrench::StringsFrame</a><br />
+Class <a href="Hexwrench/StringsList.html" class="link">Hexwrench::StringsList</a><br />
+Class <a href="Hexwrench/StringsTableBase.html" class="link">Hexwrench::StringsTableBase</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_DATA_INSPECTORS</td>
+          <td>=</td>
+          <td class="context-item-value">[     { :label =&gt; &quot;8 bit&quot;,        :enabled =&gt; true,       :proc =&gt; lambda {|buf, idx, parent| buf[idx].to_s} },      { :label =&gt; &quot;16 bit&quot;,        :enabled =&gt; true,       :proc =&gt; lambda do |buf, idx, parent|          if d=buf[idx,2] and d.size == 2</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">HAVE_WXIRB</td>
+          <td>=</td>
+          <td class="context-item-value">true</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">HAVE_WXIRB</td>
+          <td>=</td>
+          <td class="context-item-value">false</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">VERSION</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;0.2.0&quot;</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

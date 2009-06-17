@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>paint_row (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 302</span>
+302:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">paint_row</span>(<span class="ruby-identifier">dc</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">addr</span>, <span class="ruby-identifier">row_num</span>)
+303:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_pen</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">TRANSPARENT_PEN</span>)
+304:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_text_foreground</span>(<span class="ruby-ivar">@addr_color</span>)
+305:       <span class="ruby-identifier">addr_str</span> = <span class="ruby-identifier">addr</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">16</span>).<span class="ruby-identifier">rjust</span>(<span class="ruby-value">2</span>,<span class="ruby-value str">&quot;0&quot;</span>)
+306:       <span class="ruby-identifier">w</span> = <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">get_text_extent</span>(<span class="ruby-identifier">addr_str</span>)[<span class="ruby-value">0</span>]
+307:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_text</span>(<span class="ruby-identifier">addr_str</span>, (<span class="ruby-ivar">@hex0</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">w</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@asc_width</span>), <span class="ruby-identifier">y</span>) 
+308:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">row_num</span>
+309:         <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_brush</span>(<span class="ruby-ivar">@alt_row_bgs</span>[ <span class="ruby-identifier">row_num</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@alt_row_bgs</span>.<span class="ruby-identifier">size</span> ])
+310:         <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_rectangle</span>(<span class="ruby-ivar">@hex0</span>, <span class="ruby-identifier">y</span>, <span class="ruby-ivar">@row_width</span>, <span class="ruby-ivar">@txt_height</span>)
+311:       <span class="ruby-keyword kw">end</span>
+312:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

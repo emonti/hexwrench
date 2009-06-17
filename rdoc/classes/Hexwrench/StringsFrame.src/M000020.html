@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>make_grid (Hexwrench::StringsFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/hexwrench/stringsgrid.rb, line 19</span>
+19:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make_grid</span>()
+20:       <span class="ruby-identifier">tbl</span> = <span class="ruby-constant">StringsTableBase</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@data</span>, <span class="ruby-ivar">@strings_opts</span>)
+21:       <span class="ruby-ivar">@grid</span>.<span class="ruby-identifier">set_table</span>(<span class="ruby-identifier">tbl</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Grid</span><span class="ruby-operator">::</span><span class="ruby-constant">GridSelectRows</span>)
+22:       <span class="ruby-ivar">@grid</span>.<span class="ruby-identifier">set_row_label_size</span>(<span class="ruby-value">0</span>)
+23:       <span class="ruby-ivar">@grid</span>.<span class="ruby-identifier">enable_grid_lines</span>(<span class="ruby-keyword kw">false</span>)
+24:       <span class="ruby-ivar">@grid</span>.<span class="ruby-identifier">disable_drag_row_size</span>()
+25:       <span class="ruby-ivar">@grid</span>.<span class="ruby-identifier">disable_drag_grid_size</span>()
+26:       <span class="ruby-ivar">@grid</span>.<span class="ruby-identifier">set_label_font</span>(<span class="ruby-ivar">@strings_opts</span>[<span class="ruby-identifier">:font</span>])
+27:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

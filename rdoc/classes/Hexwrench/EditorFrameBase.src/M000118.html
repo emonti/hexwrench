@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Hexwrench::EditorFrameBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/hexwrench/gui.rb, line 18</span>
+18:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span> = <span class="ruby-keyword kw">nil</span>)
+19:                 <span class="ruby-keyword kw">super</span>()
+20:                 <span class="ruby-identifier">xml</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">XmlResource</span>.<span class="ruby-identifier">get</span>
+21:                 <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">flags</span> = <span class="ruby-value">2</span> <span class="ruby-comment cmt"># Wx::XRC_NO_SUBCLASSING</span>
+22:                 <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">init_all_handlers</span>
+23:                 <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;/ui/gui.xrc&quot;</span>)
+24:                 <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">load_frame_subclass</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-value str">&quot;editor_frame&quot;</span>)
+25: 
+26:                 <span class="ruby-identifier">finder</span> = <span class="ruby-identifier">lambda</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">|</span> 
+27:                         <span class="ruby-identifier">int_id</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-identifier">xrcid</span>(<span class="ruby-identifier">x</span>)
+28:                         <span class="ruby-keyword kw">begin</span>
+29:                                 <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Window</span>.<span class="ruby-identifier">find_window_by_id</span>(<span class="ruby-identifier">int_id</span>, <span class="ruby-keyword kw">self</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">int_id</span>
+30:                         <span class="ruby-comment cmt"># Temporary hack to work around regression in 1.9.2; remove</span>
+31:                         <span class="ruby-comment cmt"># begin/rescue clause in later versions</span>
+32:                         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">RuntimeError</span>
+33:                                 <span class="ruby-identifier">int_id</span>
+34:                         <span class="ruby-keyword kw">end</span>
+35:                 <span class="ruby-keyword kw">end</span>
+36:                 
+37:                 <span class="ruby-ivar">@top_menu_bar</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;top_menu_bar&quot;</span>)
+38:                 <span class="ruby-ivar">@mitem_open</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_open&quot;</span>)
+39:                 <span class="ruby-ivar">@mitem_new</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_new&quot;</span>)
+40:                 <span class="ruby-ivar">@mitem_save</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_save&quot;</span>)
+41:                 <span class="ruby-ivar">@mitem_quit</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_quit&quot;</span>)
+42:                 <span class="ruby-ivar">@mitem_copy</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_copy&quot;</span>)
+43:                 <span class="ruby-ivar">@mitem_cut</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_cut&quot;</span>)
+44:                 <span class="ruby-ivar">@mitem_paste</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_paste&quot;</span>)
+45:                 <span class="ruby-ivar">@mitem_select_all</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_select_all&quot;</span>)
+46:                 <span class="ruby-ivar">@mitem_select_range</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_select_range&quot;</span>)
+47:                 <span class="ruby-ivar">@mitem_adv_search</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_adv_search&quot;</span>)
+48:                 <span class="ruby-ivar">@mitem_data_inspector</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_data_inspector&quot;</span>)
+49:                 <span class="ruby-ivar">@mitem_strings</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;mitem_strings&quot;</span>)
+50:                 <span class="ruby-ivar">@util_bar</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;util_bar&quot;</span>)
+51:                 <span class="ruby-ivar">@util_jump</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;util_jump&quot;</span>)
+52:                 <span class="ruby-ivar">@util_search</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;util_search&quot;</span>)
+53:                 <span class="ruby-ivar">@util_search_kind</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;util_search_kind&quot;</span>)
+54:                 <span class="ruby-ivar">@util_ins_chk</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;util_ins_chk&quot;</span>)
+55:                 <span class="ruby-ivar">@status_bar</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;status_bar&quot;</span>)
+56:                 <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">method_defined?</span> <span class="ruby-value str">&quot;on_init&quot;</span>
+57:                         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">on_init</span>()
+58:                 <span class="ruby-keyword kw">end</span>
+59:         <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

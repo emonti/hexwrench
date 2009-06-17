@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_char_ascii (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 687</span>
+687:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_char_ascii</span>(<span class="ruby-identifier">evt</span>)
+688:       <span class="ruby-ivar">@hexbyte_started</span>=<span class="ruby-keyword kw">false</span>
+689:       <span class="ruby-identifier">ch</span> = <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_key_code</span>
+690:       <span class="ruby-identifier">pos</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span>
+691: 
+692:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">pos</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">size</span>)
+693: 
+694:       <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">idx</span> = <span class="ruby-identifier">gui_set_value</span>(<span class="ruby-identifier">pos</span>, <span class="ruby-identifier">ch</span>.<span class="ruby-identifier">chr</span>)) <span class="ruby-operator">!=</span> <span class="ruby-identifier">pos</span>
+695:         <span class="ruby-identifier">move_to_idx</span>(<span class="ruby-identifier">idx</span>, <span class="ruby-value">1</span>)
+696:       <span class="ruby-keyword kw">else</span>
+697:         <span class="ruby-identifier">move_cursor_right</span>()
+698:       <span class="ruby-keyword kw">end</span>
+699:       <span class="ruby-ivar">@selection</span>=<span class="ruby-keyword kw">nil</span>
+700:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

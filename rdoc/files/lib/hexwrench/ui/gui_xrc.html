@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: gui.xrc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>gui.xrc</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/hexwrench/ui/gui.xrc
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Wed Jun 17 16:13:28 -0500 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;resource version=&quot;2.3.0.1&quot; xmlns=&quot;<a
+href="http://www.wxwidgets.org/wxxrc">www.wxwidgets.org/wxxrc</a>&quot;&gt;
+</p>
+<pre>
+    &lt;object class=&quot;wxFrame&quot; name=&quot;editor_frame&quot; subclass=&quot;EditorFrameBase&quot;&gt;
+        &lt;style&gt;wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxMINIMIZE_BOX|wxMAXIMIZE_BOX|wxCLOSE_BOX&lt;/style&gt;
+        &lt;size&gt;400,300&lt;/size&gt;
+        &lt;title&gt;Hexwrench&lt;/title&gt;
+        &lt;object class=&quot;wxMenuBar&quot; name=&quot;top_menu_bar&quot;&gt;
+            &lt;object class=&quot;wxMenu&quot;&gt;
+                &lt;label&gt;&amp;amp;File&lt;/label&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_open&quot;&gt;
+                    &lt;label&gt;Open&lt;/label&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_new&quot;&gt;
+                    &lt;label&gt;New&lt;/label&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_save&quot;&gt;
+                    &lt;label&gt;Save&lt;/label&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_quit&quot;&gt;
+                    &lt;label&gt;Quit&lt;/label&gt;
+                &lt;/object&gt;
+            &lt;/object&gt;
+            &lt;object class=&quot;wxMenu&quot;&gt;
+                &lt;label&gt;&amp;amp;Edit&lt;/label&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_copy&quot;&gt;
+                    &lt;label&gt;Copy&lt;/label&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_cut&quot;&gt;
+                    &lt;label&gt;Cut&lt;/label&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_paste&quot;&gt;
+                    &lt;label&gt;Paste&lt;/label&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_select_all&quot;&gt;
+                    &lt;label&gt;Select All&lt;/label&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_select_range&quot;&gt;
+                    &lt;label&gt;Select Range&lt;/label&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;separator&quot;&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_adv_search&quot;&gt;
+                    &lt;label&gt;Advanced Search&lt;/label&gt;
+                &lt;/object&gt;
+            &lt;/object&gt;
+            &lt;object class=&quot;wxMenu&quot;&gt;
+                &lt;label&gt;&amp;amp;Tools&lt;/label&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_data_inspector&quot;&gt;
+                    &lt;label&gt;Data Inspector&lt;/label&gt;
+                &lt;/object&gt;
+                &lt;object class=&quot;wxMenuItem&quot; name=&quot;mitem_strings&quot;&gt;
+                    &lt;label&gt;Strings&lt;/label&gt;
+                &lt;/object&gt;
+            &lt;/object&gt;
+        &lt;/object&gt;
+        &lt;object class=&quot;wxToolBar&quot; name=&quot;util_bar&quot;&gt;
+            &lt;style&gt;wxTB_FLAT|wxTB_HORIZONTAL&lt;/style&gt;
+            &lt;object class=&quot;wxTextCtrl&quot; name=&quot;util_jump&quot;&gt;
+                &lt;style&gt;wxTE_PROCESS_ENTER&lt;/style&gt;
+                &lt;value&gt;jump to addr.&lt;/value&gt;
+            &lt;/object&gt;
+            &lt;object class=&quot;separator&quot;&gt;
+            &lt;/object&gt;
+            &lt;object class=&quot;wxTextCtrl&quot; name=&quot;util_search&quot;&gt;
+                &lt;style&gt;wxTE_PROCESS_ENTER&lt;/style&gt;
+                &lt;value&gt;search&lt;/value&gt;
+            &lt;/object&gt;
+            &lt;object class=&quot;wxChoice&quot; name=&quot;util_search_kind&quot;&gt;
+                &lt;size&gt;70,-1&lt;/size&gt;
+                &lt;font&gt;
+                    &lt;size&gt;10&lt;/size&gt;
+                    &lt;family&gt;modern&lt;/family&gt;
+                &lt;/font&gt;
+                &lt;content&gt;
+                    &lt;item&gt;ASCII&lt;/item&gt;
+                    &lt;item&gt;Hex&lt;/item&gt;
+                &lt;/content&gt;
+                &lt;selection&gt;0&lt;/selection&gt;
+            &lt;/object&gt;
+            &lt;object class=&quot;separator&quot;&gt;
+            &lt;/object&gt;
+            &lt;object class=&quot;wxCheckBox&quot; name=&quot;util_ins_chk&quot;&gt;
+                &lt;label&gt;INS&lt;/label&gt;
+                &lt;checked&gt;1&lt;/checked&gt;
+            &lt;/object&gt;
+        &lt;/object&gt;
+        &lt;object class=&quot;wxStatusBar&quot; name=&quot;status_bar&quot;&gt;
+            &lt;style&gt;wxST_SIZEGRIP|wxNO_BORDER&lt;/style&gt;
+            &lt;fields&gt;2&lt;/fields&gt;
+            &lt;widths&gt;&lt;/widths&gt;
+        &lt;/object&gt;
+    &lt;/object&gt;
+</pre>
+<p>
+&lt;/resource&gt;
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

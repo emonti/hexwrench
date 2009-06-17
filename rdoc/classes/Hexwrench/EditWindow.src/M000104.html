@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>coords_to_idx (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 737</span>
+737:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">coords_to_idx</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">area</span>)
+738:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">area</span> <span class="ruby-operator">==</span> <span class="ruby-constant">HEX_AREA</span>
+739:         <span class="ruby-identifier">left</span> = <span class="ruby-ivar">@hex0</span>
+740:         <span class="ruby-identifier">right</span> = <span class="ruby-ivar">@hexN</span>
+741:         <span class="ruby-identifier">col_w</span> = <span class="ruby-ivar">@hex_width</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@asc_width</span>
+742:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">area</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ASCII_AREA</span>
+743:         <span class="ruby-identifier">left</span> = <span class="ruby-ivar">@asc0</span>
+744:         <span class="ruby-identifier">right</span> = <span class="ruby-ivar">@ascN</span>
+745:         <span class="ruby-identifier">col_w</span> = <span class="ruby-ivar">@asc_width</span>
+746:       <span class="ruby-keyword kw">else</span>
+747:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+748:       <span class="ruby-keyword kw">end</span>
+749: 
+750:       <span class="ruby-identifier">xcol</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">left</span> 
+751:                <span class="ruby-value">0</span>
+752:              <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">right</span>  
+753:                <span class="ruby-ivar">@columns</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>
+754:              <span class="ruby-keyword kw">else</span>
+755:                ((<span class="ruby-identifier">x</span><span class="ruby-operator">-</span><span class="ruby-identifier">left</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">col_w</span>)
+756:              <span class="ruby-keyword kw">end</span>
+757: 
+758:       <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">row</span>=<span class="ruby-identifier">hit_test</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)) <span class="ruby-operator">!=</span> <span class="ruby-value">-1</span>
+759:         <span class="ruby-keyword kw">return</span>( (<span class="ruby-identifier">hit_test</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>) <span class="ruby-operator">*</span> <span class="ruby-ivar">@columns</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">xcol</span> )
+760:       <span class="ruby-keyword kw">else</span>
+761:         <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">size</span>
+762:       <span class="ruby-keyword kw">end</span>
+763:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

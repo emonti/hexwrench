@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>do_clipboard_cut (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 887</span>
+887:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">do_clipboard_cut</span>
+888:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">do_clipboard_copy</span>()
+889:         <span class="ruby-identifier">pos</span> = <span class="ruby-ivar">@selection</span>.<span class="ruby-identifier">first</span>
+890:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">gui_set_value</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">''</span>)
+891:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span> = <span class="ruby-identifier">pos</span>
+892:       <span class="ruby-keyword kw">end</span>
+893:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

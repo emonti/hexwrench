@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>paint_boundaries (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 317</span>
+317:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">paint_boundaries</span>(<span class="ruby-identifier">dc</span>)
+318:       <span class="ruby-identifier">height</span> = <span class="ruby-ivar">@rows</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@txt_height</span>
+319: 
+320:       <span class="ruby-comment cmt"># draw area boundaries</span>
+321:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_pen</span>(<span class="ruby-ivar">@area_bounds_pen</span>)
+322:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_line</span>(<span class="ruby-identifier">x2</span>=(<span class="ruby-ivar">@hex0</span>)<span class="ruby-operator">-</span><span class="ruby-value">2</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">x2</span>, <span class="ruby-identifier">height</span>)
+323:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_line</span>(<span class="ruby-identifier">x2</span>=(<span class="ruby-ivar">@asc0</span><span class="ruby-operator">-</span><span class="ruby-ivar">@asc_width</span>), <span class="ruby-value">0</span>, <span class="ruby-identifier">x2</span>, <span class="ruby-identifier">height</span>)
+324:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_line</span>(<span class="ruby-identifier">x2</span>=(<span class="ruby-ivar">@hex0</span><span class="ruby-operator">+</span><span class="ruby-ivar">@row_width</span>), <span class="ruby-value">0</span>, <span class="ruby-identifier">x2</span>, <span class="ruby-identifier">height</span>)
+325: 
+326:       <span class="ruby-identifier">hex_w</span> = <span class="ruby-ivar">@hex_width</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@asc_width</span>
+327:       <span class="ruby-identifier">h_off</span> = <span class="ruby-ivar">@hex_width</span> <span class="ruby-operator">/</span><span class="ruby-value">2</span>
+328:       <span class="ruby-identifier">l_off</span> = <span class="ruby-ivar">@asc_width</span> <span class="ruby-operator">/</span><span class="ruby-value">2</span>
+329: 
+330:       <span class="ruby-comment cmt"># draw WORD boundary indicator lines in the hex area</span>
+331:       <span class="ruby-identifier">divW</span> = (<span class="ruby-identifier">hex_w</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">2</span>)
+332:       <span class="ruby-identifier">divX</span> = <span class="ruby-ivar">@hex0</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">divW</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+333:       <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">set_pen</span>( <span class="ruby-ivar">@word_bounds_pen</span> )
+334:       <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">divX</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@hexN</span><span class="ruby-operator">-</span><span class="ruby-identifier">h_off</span>
+335:         <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">draw_line</span>(<span class="ruby-identifier">x2</span>=(<span class="ruby-identifier">divX</span><span class="ruby-operator">+</span><span class="ruby-identifier">l_off</span>), <span class="ruby-value">0</span>, <span class="ruby-identifier">x2</span>, <span class="ruby-identifier">height</span>)
+336:         <span class="ruby-identifier">divX</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">divW</span>
+337:       <span class="ruby-keyword kw">end</span>
+338:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>set_filename (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 234</span>
+234:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_filename</span>(<span class="ruby-identifier">name</span>)
+235:       <span class="ruby-ivar">@filename</span> = <span class="ruby-identifier">name</span>
+236:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>
+237:         <span class="ruby-identifier">set_title</span> <span class="ruby-value str">&quot;Hexwrench - &quot;</span><span class="ruby-operator">+</span>
+238:                   <span class="ruby-node">&quot;#{File.basename(name)} &quot;</span><span class="ruby-operator">+</span>
+239:                   <span class="ruby-node">&quot;(#{File.dirname(File.expand_path(name))})&quot;</span>
+240:       <span class="ruby-keyword kw">else</span>
+241:         <span class="ruby-identifier">set_title</span> <span class="ruby-value str">&quot;Hexwrench&quot;</span>
+242:       <span class="ruby-keyword kw">end</span>
+243:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

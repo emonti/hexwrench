@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>do_clipboard_copy (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 872</span>
+872:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">do_clipboard_copy</span>
+873:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">sel</span>=<span class="ruby-ivar">@selection</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">dat</span>=<span class="ruby-ivar">@data</span>[<span class="ruby-identifier">sel</span>]
+874:       <span class="ruby-comment cmt"># XXX i feel dirty</span>
+875:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">PLATFORM</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;WXMAC&quot;</span>
+876:         <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>(<span class="ruby-value str">&quot;pbcopy&quot;</span>, <span class="ruby-value str">&quot;w&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">dat</span>}
+877:         <span class="ruby-identifier">stat</span> = <span class="ruby-identifier">$?</span>.<span class="ruby-identifier">success?</span>
+878:       <span class="ruby-keyword kw">else</span>
+879:         <span class="ruby-identifier">dobj</span> = <span class="ruby-constant">RawDataObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dat</span>)
+880:         <span class="ruby-identifier">stat</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Clipboard</span>.<span class="ruby-identifier">open</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">clip</span><span class="ruby-operator">|</span> <span class="ruby-identifier">clip</span>.<span class="ruby-identifier">place</span> <span class="ruby-identifier">dobj</span>}
+881:       <span class="ruby-keyword kw">end</span>
+882:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">stat</span>
+883:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

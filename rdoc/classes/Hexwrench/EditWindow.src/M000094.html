@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>gui_set_value (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 543</span>
+543:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">gui_set_value</span>(<span class="ruby-identifier">idx</span>, <span class="ruby-identifier">val</span>, <span class="ruby-identifier">force_overwrite</span>=<span class="ruby-keyword kw">false</span>)
+544:       <span class="ruby-identifier">sel</span>=<span class="ruby-ivar">@selection</span>
+545:       <span class="ruby-identifier">clear_selection</span>()
+546:       <span class="ruby-identifier">ret</span>=<span class="ruby-keyword kw">nil</span>
+547:       <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">sel</span>.<span class="ruby-identifier">nil?</span>
+548:         <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">sel</span>] = <span class="ruby-identifier">val</span>
+549:         <span class="ruby-ivar">@data_changed</span>=<span class="ruby-keyword kw">true</span>
+550:         <span class="ruby-identifier">ret</span>=<span class="ruby-identifier">sel</span>.<span class="ruby-identifier">first</span>
+551:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">idx</span> <span class="ruby-keyword kw">and</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@data</span>.<span class="ruby-identifier">size</span>).<span class="ruby-identifier">include?</span> <span class="ruby-identifier">idx</span>
+552:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ins_mode</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">force_overwrite</span>
+553:           <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">idx</span>, <span class="ruby-value">0</span>] = <span class="ruby-identifier">val</span>
+554:         <span class="ruby-keyword kw">else</span>
+555:           <span class="ruby-identifier">vsize</span> = (<span class="ruby-identifier">val</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>)<span class="ruby-operator">?</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+556:           <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">idx</span>, <span class="ruby-identifier">vsize</span>] = <span class="ruby-identifier">val</span>
+557:         <span class="ruby-keyword kw">end</span>
+558:         <span class="ruby-ivar">@data_changed</span>=<span class="ruby-keyword kw">true</span>
+559:         <span class="ruby-identifier">ret</span>=<span class="ruby-identifier">idx</span>
+560:       <span class="ruby-keyword kw">end</span>
+561:       <span class="ruby-identifier">update_dimensions</span>
+562:       <span class="ruby-identifier">refresh</span>
+563:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">ret</span>
+564:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

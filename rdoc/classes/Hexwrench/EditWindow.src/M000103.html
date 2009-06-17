@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_char_hex (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 704</span>
+704:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_char_hex</span>(<span class="ruby-identifier">evt</span>)
+705:       <span class="ruby-identifier">ch</span> = <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_key_code</span>
+706:       <span class="ruby-identifier">pos</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span>
+707: 
+708:       <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:on_key_space</span>)
+709:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:on_key_space</span>)
+710:       <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">binv</span>=<span class="ruby-constant">HEX_CHARS</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">ch</span>.<span class="ruby-identifier">chr</span>.<span class="ruby-identifier">downcase</span>)).<span class="ruby-identifier">nil?</span>
+711:         <span class="ruby-keyword kw">return</span>
+712:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@selection</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@selection</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+713:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span> = <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">gui_set_value</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">''</span>)
+714:       <span class="ruby-keyword kw">end</span>
+715: 
+716:       <span class="ruby-keyword kw">if</span> (<span class="ruby-ivar">@hexbyte_started</span>)
+717:         <span class="ruby-identifier">orig</span> = (<span class="ruby-ivar">@data</span>[<span class="ruby-identifier">pos</span>] <span class="ruby-operator">||</span> <span class="ruby-value">0</span>)
+718:         <span class="ruby-identifier">binv</span> = ((<span class="ruby-identifier">orig</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">4</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">binv</span>) <span class="ruby-operator">&amp;</span> <span class="ruby-value">0x</span><span class="ruby-constant">FF</span>
+719:         <span class="ruby-ivar">@hexbyte_started</span>=<span class="ruby-keyword kw">false</span>
+720:         <span class="ruby-identifier">overwrite</span>=<span class="ruby-keyword kw">true</span>
+721:       <span class="ruby-keyword kw">else</span>
+722:         <span class="ruby-ivar">@hexbyte_started</span> = <span class="ruby-keyword kw">true</span>
+723:         <span class="ruby-identifier">overwrite</span>=<span class="ruby-keyword kw">false</span>
+724:       <span class="ruby-keyword kw">end</span>
+725: 
+726:       <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">idx</span>=<span class="ruby-identifier">gui_set_value</span>(<span class="ruby-identifier">pos</span>, <span class="ruby-identifier">binv</span>.<span class="ruby-identifier">chr</span>, <span class="ruby-identifier">overwrite</span>)) <span class="ruby-operator">!=</span> <span class="ruby-identifier">pos</span>
+727:         <span class="ruby-identifier">move_to_idx</span>(<span class="ruby-identifier">idx</span>, <span class="ruby-value">1</span>)
+728:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@hexbyte_started</span>
+729:         <span class="ruby-identifier">move_cursor_right</span>()
+730:       <span class="ruby-keyword kw">else</span>
+731:         <span class="ruby-identifier">refresh</span>
+732:       <span class="ruby-keyword kw">end</span>
+733:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

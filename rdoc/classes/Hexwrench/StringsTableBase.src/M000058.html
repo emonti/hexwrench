@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Hexwrench::StringsTableBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/hexwrench/stringsgrid.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">strings_opts</span>=<span class="ruby-keyword kw">nil</span>)
+32:       <span class="ruby-keyword kw">super</span>()
+33:       <span class="ruby-identifier">strings_opts</span> <span class="ruby-operator">||=</span> {}
+34:       <span class="ruby-ivar">@font</span> = <span class="ruby-identifier">strings_opts</span>[<span class="ruby-identifier">:font</span>] 
+35:       <span class="ruby-ivar">@font</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">10</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">MODERN</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">NORMAL</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">NORMAL</span>)
+36:       <span class="ruby-ivar">@cell_attr</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">GridCellAttr</span>.<span class="ruby-identifier">new</span>( <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">WHITE</span>, <span class="ruby-ivar">@font</span>, 
+37:                                         <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGN_LEFT</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGN_CENTRE</span>)
+38:       <span class="ruby-ivar">@cell_attr</span>.<span class="ruby-identifier">set_read_only</span>(<span class="ruby-keyword kw">true</span>)
+39:       <span class="ruby-ivar">@strings</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">strings</span>(<span class="ruby-identifier">strings_opts</span>)
+40:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

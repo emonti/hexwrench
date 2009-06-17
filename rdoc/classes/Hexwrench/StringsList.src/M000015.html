@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get_string (Hexwrench::StringsList)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/stringsvlist.rb, line 96</span>
+ 96:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_string</span>(<span class="ruby-identifier">match</span>)
+ 97:       <span class="ruby-identifier">dat</span> = <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">data</span>[(<span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">..</span><span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">-</span><span class="ruby-value">1</span>)]
+ 98:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">:unicode</span> 
+ 99:         <span class="ruby-identifier">dat</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/(.)\x00/</span>){<span class="ruby-identifier">$1</span>}
+100:       <span class="ruby-keyword kw">else</span>
+101:         <span class="ruby-identifier">dat</span>
+102:       <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">inspect</span>
+103:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

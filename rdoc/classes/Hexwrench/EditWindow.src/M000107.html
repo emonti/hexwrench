@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_left_button_up (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 801</span>
+801:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_left_button_up</span>(<span class="ruby-identifier">evt</span>)
+802:       <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">evt</span>.<span class="ruby-identifier">left_is_down</span>()
+803:         <span class="ruby-ivar">@dragging</span> = <span class="ruby-keyword kw">false</span>
+804:         <span class="ruby-identifier">x</span>=<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_x</span> ; <span class="ruby-identifier">y</span>=<span class="ruby-identifier">evt</span>.<span class="ruby-identifier">get_y</span> 
+805:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@selection</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">and</span> 
+806:           <span class="ruby-identifier">idx</span>=<span class="ruby-identifier">coords_to_idx</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>, <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">area</span>) <span class="ruby-keyword kw">and</span> 
+807:           <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">idx</span>]
+808:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cur_pos</span> = <span class="ruby-identifier">idx</span>
+809:         <span class="ruby-keyword kw">end</span>
+810:       <span class="ruby-keyword kw">else</span>
+811:         <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">skip</span>()
+812:         <span class="ruby-keyword kw">return</span>
+813:       <span class="ruby-keyword kw">end</span>
+814:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>refresh_strings (Hexwrench::StringsList)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/hexwrench/stringsvlist.rb, line 75</span>
+75:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">refresh_strings</span>()
+76:       <span class="ruby-ivar">@strings</span> = []
+77:       <span class="ruby-identifier">colwids</span> = <span class="ruby-ivar">@labels</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@dc</span>.<span class="ruby-identifier">get_text_extent</span>(<span class="ruby-node">&quot;@@#{l}@@&quot;</span>, <span class="ruby-ivar">@font</span>)[<span class="ruby-value">0</span>]}
+78:       <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">data</span>.<span class="ruby-identifier">strings</span>(<span class="ruby-ivar">@strings_opts</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">mtch</span><span class="ruby-operator">|</span>
+79:         <span class="ruby-ivar">@strings</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">mtch</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>]
+80: 
+81:         <span class="ruby-comment cmt"># calculate column widths during loop so we don't have to autosize </span>
+82:         <span class="ruby-comment cmt"># later. (autosize can be slow on large lists)</span>
+83:         <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-value">2</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+84:           <span class="ruby-identifier">owid</span> = <span class="ruby-identifier">colwids</span>[<span class="ruby-identifier">i</span>]
+85:           <span class="ruby-identifier">nwid</span> = <span class="ruby-ivar">@dc</span>.<span class="ruby-identifier">get_text_extent</span>(<span class="ruby-node">&quot;@#{mtch[i]}@&quot;</span>, <span class="ruby-ivar">@font</span>)[<span class="ruby-value">0</span>]
+86:           <span class="ruby-identifier">colwids</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">nwid</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">nwid</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">owid</span>
+87:         <span class="ruby-keyword kw">end</span>
+88:         <span class="ruby-identifier">swid</span>=<span class="ruby-identifier">colwids</span>[<span class="ruby-value">3</span>]
+89:         <span class="ruby-identifier">nswid</span>=<span class="ruby-ivar">@dc</span>.<span class="ruby-identifier">get_text_extent</span>(<span class="ruby-node">&quot;@#{get_string(mtch)}@&quot;</span>, <span class="ruby-ivar">@font</span>)[<span class="ruby-value">0</span>]
+90:         <span class="ruby-identifier">colwids</span>[<span class="ruby-value">3</span>] = <span class="ruby-identifier">nswid</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">nswid</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">swid</span>
+91:       <span class="ruby-keyword kw">end</span>
+92:       <span class="ruby-identifier">colwids</span>.<span class="ruby-identifier">each_index</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">set_column_width</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">colwids</span>[<span class="ruby-identifier">i</span>])}
+93:       <span class="ruby-identifier">set_item_count</span>(<span class="ruby-ivar">@strings</span>.<span class="ruby-identifier">size</span>)
+94:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>on_get_item_text (Hexwrench::StringsList)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/stringsvlist.rb, line 108</span>
+108:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_get_item_text</span>(<span class="ruby-identifier">row</span>, <span class="ruby-identifier">col</span>)
+109:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">r</span> = <span class="ruby-ivar">@strings</span>[<span class="ruby-identifier">row</span>]
+110:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">col</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span>
+111:           <span class="ruby-identifier">get_string</span>(<span class="ruby-identifier">r</span>)
+112:         <span class="ruby-keyword kw">else</span>
+113:           <span class="ruby-identifier">r</span>[<span class="ruby-identifier">col</span>].<span class="ruby-identifier">to_s</span>
+114:         <span class="ruby-keyword kw">end</span>
+115:       <span class="ruby-keyword kw">end</span>
+116:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Hexwrench::EditWindow)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>     <span class="ruby-comment cmt"># File lib/hexwrench/edit_window.rb, line 49</span>
+ 49:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">data</span>, <span class="ruby-identifier">opt</span>={})
+ 50:       <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">parent</span>, 
+ 51:             <span class="ruby-identifier">:id</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">opt</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-operator">||</span> <span class="ruby-value">-1</span>),
+ 52:             <span class="ruby-identifier">:pos</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">opt</span>[<span class="ruby-identifier">:pos</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_POSITION</span>),
+ 53:             <span class="ruby-identifier">:size</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">opt</span>[<span class="ruby-identifier">:size</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_SIZE</span>),
+ 54:             <span class="ruby-identifier">:style</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">opt</span>[<span class="ruby-identifier">:style</span>] <span class="ruby-operator">||</span> <span class="ruby-value">0</span>) <span class="ruby-operator">|</span> <span class="ruby-constant">STYLE</span>,
+ 55:             <span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">opt</span>[<span class="ruby-identifier">:name</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">''</span>)
+ 56: 
+ 57:       <span class="ruby-ivar">@data</span> = (<span class="ruby-identifier">data</span> <span class="ruby-operator">||</span> <span class="ruby-value str">''</span>)
+ 58: 
+ 59:       <span class="ruby-constant">Struct</span>.<span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;Cursor&quot;</span>, 
+ 60:                   <span class="ruby-identifier">:pos</span>,        <span class="ruby-comment cmt"># current index into the data</span>
+ 61:                   <span class="ruby-identifier">:area</span>,       <span class="ruby-comment cmt"># primary data_area the cursor is in</span>
+ 62:                   <span class="ruby-identifier">:ins_mode</span>    <span class="ruby-comment cmt"># Insert/Overwrite mode boolean</span>
+ 63: 
+ 64:       <span class="ruby-ivar">@cursor</span> = <span class="ruby-constant">Struct</span><span class="ruby-operator">::</span><span class="ruby-constant">Cursor</span>.<span class="ruby-identifier">new</span>()
+ 65:       <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-value">0</span>
+ 66:       <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">area</span> = <span class="ruby-constant">HEX_AREA</span>
+ 67:       <span class="ruby-ivar">@other_area</span> = <span class="ruby-constant">ASCII_AREA</span>
+ 68:       <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">ins_mode</span> = <span class="ruby-keyword kw">true</span>
+ 69: 
+ 70:       <span class="ruby-ivar">@selection</span> = <span class="ruby-keyword kw">nil</span>
+ 71: 
+ 72:       <span class="ruby-ivar">@post_paint_proc</span> = <span class="ruby-identifier">opt</span>[<span class="ruby-identifier">:post_paint_proc</span>]
+ 73: 
+ 74:       <span class="ruby-identifier">init_font</span>( (<span class="ruby-identifier">opt</span>[<span class="ruby-identifier">:font</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_FONT</span>) )
+ 75: 
+ 76:       <span class="ruby-comment cmt">## set color palette:</span>
+ 77: 
+ 78:       <span class="ruby-comment cmt"># color behind address and in dead-space to right</span>
+ 79:       <span class="ruby-ivar">@bg_color</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">WHITE</span>
+ 80:       <span class="ruby-identifier">set_background_colour</span>(<span class="ruby-ivar">@bg_color</span>)
+ 81: 
+ 82:       <span class="ruby-comment cmt"># hexdump text and bounds colors</span>
+ 83:       <span class="ruby-ivar">@dump_color</span>=<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>)
+ 84:       <span class="ruby-ivar">@addr_color</span>=<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">128</span>,<span class="ruby-value">128</span>,<span class="ruby-value">128</span>)
+ 85:       <span class="ruby-ivar">@area_bounds_pen</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Pen</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;GREY&quot;</span>, <span class="ruby-value">2</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">SOLID</span>)
+ 86:       <span class="ruby-ivar">@word_bounds_pen</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Pen</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;LIGHT GREY&quot;</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">SOLID</span>)
+ 87: 
+ 88:       <span class="ruby-comment cmt"># alternating row background colors</span>
+ 89:       <span class="ruby-ivar">@alt_row_bgs</span> = [ 
+ 90:         <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Brush</span>.<span class="ruby-identifier">new</span>( <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;WHITE&quot;</span>) ),
+ 91:         <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Brush</span>.<span class="ruby-identifier">new</span>( <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">237</span>, <span class="ruby-value">247</span>, <span class="ruby-value">254</span> ) )
+ 92:       ]
+ 93: 
+ 94:       <span class="ruby-comment cmt"># colors for selection in primary and 'other' data displays</span>
+ 95:       <span class="ruby-ivar">@select_bgs</span> = [
+ 96:         <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Brush</span>.<span class="ruby-identifier">new</span>( <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">181</span>,<span class="ruby-value">213</span>,<span class="ruby-value">255</span>) ),
+ 97:         <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Brush</span>.<span class="ruby-identifier">new</span>( <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">212</span>,<span class="ruby-value">212</span>,<span class="ruby-value">212</span>) )
+ 98:       ]
+ 99: 
+100:       <span class="ruby-comment cmt"># colors for the cursor</span>
+101:       <span class="ruby-ivar">@cursor_text1</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>)
+102:       <span class="ruby-ivar">@cursor_pen1</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">220</span>, <span class="ruby-value">158</span>, <span class="ruby-value">50</span>)
+103:       <span class="ruby-ivar">@cursor_bg1</span>  = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">220</span>, <span class="ruby-value">158</span>, <span class="ruby-value">50</span>)
+104:       <span class="ruby-ivar">@cursor_text2</span>  = <span class="ruby-ivar">@dump_color</span>
+105:       <span class="ruby-ivar">@cursor_pen2</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">Colour</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>)
+106:       <span class="ruby-ivar">@cursor_bg2</span>  = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">TRANSPARENT_BRUSH</span>
+107: 
+108:       <span class="ruby-comment cmt">## initialize event handlers</span>
+109:       <span class="ruby-identifier">evt_window_create</span> <span class="ruby-identifier">:on_create</span>
+110:       <span class="ruby-identifier">evt_size</span>          <span class="ruby-identifier">:on_size</span>
+111:       <span class="ruby-identifier">evt_paint</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">paint_buffered</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">dc</span><span class="ruby-operator">|</span> <span class="ruby-identifier">on_paint</span>(<span class="ruby-identifier">dc</span>)} }
+112: 
+113:       <span class="ruby-identifier">evt_idle</span>          <span class="ruby-identifier">:on_idle</span>
+114: 
+115:       <span class="ruby-identifier">evt_char</span>          <span class="ruby-identifier">:on_char</span>
+116:       <span class="ruby-identifier">evt_left_down</span>     <span class="ruby-identifier">:on_left_button_down</span>
+117:       <span class="ruby-identifier">evt_motion</span>        <span class="ruby-identifier">:on_mouse_motion</span>
+118:       <span class="ruby-identifier">evt_left_up</span>       <span class="ruby-identifier">:on_left_button_up</span>
+119:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

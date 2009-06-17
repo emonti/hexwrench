@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Hexwrench::EditorFrame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/hexwrench/edit_frame.rb, line 17</span>
+17:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">opts</span>={})
+18:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">parent</span>)
+19:       <span class="ruby-identifier">set_title</span> <span class="ruby-value str">&quot;Hexwrench&quot;</span>
+20: 
+21:       <span class="ruby-comment cmt"># XXX how we gonna do config? hmm.</span>
+22:       <span class="ruby-ivar">@config</span> <span class="ruby-operator">||=</span> {}
+23: 
+24:       <span class="ruby-identifier">buf</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:data</span>)
+25:       <span class="ruby-identifier">sizer</span> = <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">BoxSizer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">HORIZONTAL</span>)
+26:       <span class="ruby-ivar">@editor</span> = <span class="ruby-constant">EditWindow</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">buf</span>)
+27:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">f</span>=<span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:filename</span>)
+28:         <span class="ruby-identifier">do_open_file</span>(<span class="ruby-identifier">f</span>)
+29:       <span class="ruby-keyword kw">end</span>
+30: 
+31:       <span class="ruby-identifier">sizer</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@editor</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPAND</span><span class="ruby-operator">|</span><span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">ALL</span>, <span class="ruby-value">2</span>)
+32:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">sizer</span> = <span class="ruby-identifier">sizer</span>
+33: 
+34:       <span class="ruby-comment cmt"># Set up the 'jump' and 'search' toolbar utilities</span>
+35:                 <span class="ruby-ivar">@util_search</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">UtilTextCtrl</span>)
+36:                 <span class="ruby-ivar">@util_jump</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">UtilTextCtrl</span>)
+37: 
+38:       <span class="ruby-ivar">@util_search</span>.<span class="ruby-identifier">init</span>
+39:       <span class="ruby-ivar">@util_jump</span>.<span class="ruby-identifier">init</span>
+40: 
+41:       <span class="ruby-identifier">evt_text_enter</span> <span class="ruby-ivar">@util_search</span>, <span class="ruby-identifier">:on_search_util</span>
+42:       <span class="ruby-identifier">evt_text_enter</span> <span class="ruby-ivar">@util_jump</span>,   <span class="ruby-identifier">:on_jump_util</span>
+43: 
+44:       <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-keyword kw">do</span>
+45:         <span class="ruby-comment cmt"># redirect the hex editor's 'ins_mode accessors to our own</span>
+46:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ins_mode</span>; <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">ins_mode</span> ; <span class="ruby-keyword kw">end</span>
+47:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ins_mode=</span>(<span class="ruby-identifier">val</span>); <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">ins_mode</span>=(<span class="ruby-identifier">val</span>) ; <span class="ruby-keyword kw">end</span>
+48:       <span class="ruby-keyword kw">end</span>
+49: 
+50:       <span class="ruby-identifier">update_status_bar</span>()
+51:       <span class="ruby-identifier">init_menu_bar</span>()
+52: 
+53:       <span class="ruby-comment cmt"># Custom event handlers from the EditorWindow</span>
+54:       <span class="ruby-identifier">evt_cursor_moved</span> <span class="ruby-ivar">@editor</span>, <span class="ruby-identifier">:on_cursor_move</span>
+55:       <span class="ruby-identifier">evt_data_changed</span> <span class="ruby-ivar">@editor</span>, <span class="ruby-identifier">:on_data_change</span>
+56: 
+57:       <span class="ruby-identifier">evt_close</span> <span class="ruby-identifier">:on_close</span>
+58: 
+59:       <span class="ruby-ivar">@editor</span>.<span class="ruby-identifier">set_focus</span>
+60:     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

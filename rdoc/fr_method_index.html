@@ -1,0 +1,144 @@
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+
+    Methods
+
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Methods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="rdoc-style.css" type="text/css" />
+  <base target="docwin" />
+</head>
+<body>
+<div id="index">
+  <h1 class="section-bar">Methods</h1>
+  <div id="index-entries">
+    <a href="classes/Hexwrench/EditWindow.html#M000105">area_for_x (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/UtilTextCtrl.html#M000004">clear_error (Hexwrench::UtilTextCtrl)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000088">clear_selection (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000040">clear_util_errors (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000081">colorize_byte_bg (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000043">confirm_discard_changes? (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000104">coords_to_idx (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/StringsList.html#M000016">create_strings (Hexwrench::StringsList)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000069">cur_pos (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000070">cur_pos= (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000084">disp_ascii_byte (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000083">disp_hex_byte (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000111">do_clipboard_copy (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000112">do_clipboard_cut (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000113">do_clipboard_paste (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/UtilTextCtrl.html#M000002">do_default_text (Hexwrench::UtilTextCtrl)</a><br />
+    <a href="classes/Hexwrench/UtilTextCtrl.html#M000003">do_error (Hexwrench::UtilTextCtrl)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000045">do_open_file (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000031">do_quit (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000048">do_save (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000049">do_save_as (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000038">do_search (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000110">do_select_all (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/StringsFrame.html#M000026">do_strings (Hexwrench::StringsFrame)</a><br />
+    <a href="classes/Hexwrench/StringsList.html#M000012">do_strings (Hexwrench::StringsList)</a><br />
+    <a href="classes/Hexwrench/StringsFrame.html#M000023">do_strings (Hexwrench::StringsFrame)</a><br />
+    <a href="classes/Hexwrench/DataChangeEvent.html#M000008">editor (Hexwrench::DataChangeEvent)</a><br />
+    <a href="classes/Hexwrench/CursorMoveEvent.html#M000010">editor (Hexwrench::CursorMoveEvent)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000087">expand_selection (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow/RawDataObject.html#M000115">get_all_formats (Hexwrench::EditWindow::RawDataObject)</a><br />
+    <a href="classes/Hexwrench/StringsTableBase.html#M000065">get_attr (Hexwrench::StringsTableBase)</a><br />
+    <a href="classes/Hexwrench/StringsTableBase.html#M000061">get_col_label_value (Hexwrench::StringsTableBase)</a><br />
+    <a href="classes/Hexwrench/EditWindow/RawDataObject.html#M000117">get_data_here (Hexwrench::EditWindow::RawDataObject)</a><br />
+    <a href="classes/Hexwrench/StringsTableBase.html#M000059">get_number_cols (Hexwrench::StringsTableBase)</a><br />
+    <a href="classes/Hexwrench/StringsTableBase.html#M000060">get_number_rows (Hexwrench::StringsTableBase)</a><br />
+    <a href="classes/Hexwrench/StringsTableBase.html#M000062">get_row_label_value (Hexwrench::StringsTableBase)</a><br />
+    <a href="classes/Hexwrench/StringsList.html#M000015">get_string (Hexwrench::StringsList)</a><br />
+    <a href="classes/Hexwrench/StringsTableBase.html#M000063">get_value (Hexwrench::StringsTableBase)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000094">gui_set_value (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/UtilTextCtrl.html#M000001">init (Hexwrench::UtilTextCtrl)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000074">init_font (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000030">init_menu_bar (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000067">ins_mode (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000033">ins_mode (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000028">ins_mode (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000068">ins_mode= (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000029">ins_mode= (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000034">ins_mode= (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/StringsTableBase.html#M000064">is_empty_cell (Hexwrench::StringsTableBase)</a><br />
+    <a href="classes/Hexwrench/StringsFrame.html#M000020">make_grid (Hexwrench::StringsFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000092">move_cursor_down (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000091">move_cursor_left (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000090">move_cursor_right (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000093">move_cursor_up (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000089">move_to_idx (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrameBase.html#M000118">new (Hexwrench::EditorFrameBase)</a><br />
+    <a href="classes/Hexwrench/StringsFrame.html#M000021">new (Hexwrench::StringsFrame)</a><br />
+    <a href="classes/Hexwrench/StringsTableBase.html#M000058">new (Hexwrench::StringsTableBase)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000027">new (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/StringsFrame.html#M000019">new (Hexwrench::StringsFrame)</a><br />
+    <a href="classes/Hexwrench/StringsList.html#M000013">new (Hexwrench::StringsList)</a><br />
+    <a href="classes/Hexwrench/StringsList.html#M000011">new (Hexwrench::StringsList)</a><br />
+    <a href="classes/Hexwrench/CursorMoveEvent.html#M000009">new (Hexwrench::CursorMoveEvent)</a><br />
+    <a href="classes/Hexwrench/DataChangeEvent.html#M000007">new (Hexwrench::DataChangeEvent)</a><br />
+    <a href="classes/Hexwrench/EditWindow/RawDataObject.html#M000114">new (Hexwrench::EditWindow::RawDataObject)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000066">new (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/StringsFrame.html#M000024">new (Hexwrench::StringsFrame)</a><br />
+    <a href="classes/Hexwrench/StringsFrame.html#M000025">notify_data_change (Hexwrench::StringsFrame)</a><br />
+    <a href="classes/Hexwrench/StringsFrame.html#M000022">notify_data_change (Hexwrench::StringsFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000096">on_char (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000102">on_char_ascii (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000103">on_char_hex (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000036">on_close (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000071">on_create (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000056">on_cursor_move (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000057">on_data_change (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/StringsList.html#M000018">on_get_item_attr (Hexwrench::StringsList)</a><br />
+    <a href="classes/Hexwrench/StringsList.html#M000017">on_get_item_text (Hexwrench::StringsList)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000073">on_get_line_height (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000076">on_idle (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000039">on_jump_util (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000097">on_key_back (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000098">on_key_delete (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000109">on_key_tab (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/UtilTextCtrl.html#M000006">on_kill_focus (Hexwrench::UtilTextCtrl)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000106">on_left_button_down (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000107">on_left_button_up (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000055">on_menu_console (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000050">on_menu_copy (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000051">on_menu_cut (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000054">on_menu_data_inspector (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000046">on_menu_new (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000044">on_menu_open (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000052">on_menu_paste (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000047">on_menu_select_all (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000053">on_menu_strings (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000042">on_menu_stub (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000108">on_mouse_motion (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000078">on_paint (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000037">on_search_util (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/UtilTextCtrl.html#M000005">on_set_focus (Hexwrench::UtilTextCtrl)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000072">on_size (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000080">paint_boundaries (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000082">paint_cursor (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000079">paint_row (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/StringsList.html#M000014">refresh_strings (Hexwrench::StringsList)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000095">resolve_key_code (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000085">scroll_to_idx (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000086">select_range (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000100">set_area_ascii (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000101">set_area_hex (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditWindow/RawDataObject.html#M000116">set_data (Hexwrench::EditWindow::RawDataObject)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000077">set_data (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000041">set_filename (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000099">switch_areas (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000035">unhexify (Hexwrench::EditorFrame)</a><br />
+    <a href="classes/Hexwrench/EditWindow.html#M000075">update_dimensions (Hexwrench::EditWindow)</a><br />
+    <a href="classes/Hexwrench/EditorFrame.html#M000032">update_status_bar (Hexwrench::EditorFrame)</a><br />
+  </div>
+</div>
+</body>
+</html>
