@@ -1,9 +1,11 @@
-# a byte-value heat colorizer based on colorbindump
+# highlights ascii characters as green, null as dark grey, and everything else 
+# as medium-grey
+#
 
-raw_palette = [[0x30, 0x30, 0x30] ] +
-              (1..31).map {|x| [96,96,96]} +
-              (32..127).map {|x| [128,196,128]} +
-              (128..255).map {|x| [96,96,96]}
+raw_palette =  [[48,48,48]] +
+               [[96,96,96]] * 31 +
+               [[128,196,128]] * 96 +
+               [[96,96,96]] * 128
 
 @palette = raw_palette.map {|p| Wx::Brush.new(Wx::Colour.new(*p[0..2]))}
 editor.post_paint_proc = lambda {|this,dc,idx,c,hX,aX,y| 
