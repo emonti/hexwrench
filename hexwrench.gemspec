@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.executables = ["hexwrench"]
   s.extra_rdoc_files = ["History.txt", "README.rdoc", "bin/hexwrench", "lib/hexwrench/build_xrc.sh", "lib/hexwrench/ui/gui.xrc"]
   s.files = ["History.txt", "README.rdoc", "Rakefile", "bin/hexwrench", "hexwrench.gemspec", "lib/hexwrench.rb", "lib/hexwrench/build_xrc.sh", "lib/hexwrench/data_inspector.rb", "lib/hexwrench/edit_frame.rb", "lib/hexwrench/edit_window.rb", "lib/hexwrench/gui.rb", "lib/hexwrench/stringsgrid.rb", "lib/hexwrench/stringslist.rb", "lib/hexwrench/stringsvlist.rb", "lib/hexwrench/ui/gui.xrc", "samples/ascii_heat_map.rb", "tasks/ann.rake", "tasks/bones.rake", "tasks/gem.rake", "tasks/git.rake", "tasks/notes.rake", "tasks/post_load.rake", "tasks/rdoc.rake", "tasks/rubyforge.rake", "tasks/setup.rb", "tasks/spec.rake", "tasks/svn.rake", "tasks/test.rake"]
-  s.homepage = %q{http://github.com/emonti/hexwrench}
+  s.homepage = %q{http://emonti.github.com/hexwrench}
   s.rdoc_options = ["--line-numbers", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{hexwrench}
@@ -36,4 +36,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bones>, [">= 2.5.1"])
   end
 end
-
