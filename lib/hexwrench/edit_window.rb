@@ -16,7 +16,7 @@ module Hexwrench
   end
   
   # The DataChangeEvent event is fired when a user makes any change to data
-  # in the hex editor window. It is used mostly by the parent window to trigger
+  # in the editor window. It is used mostly by the parent window to trigger
   # behaviours in various other UI elements when this happens.
   class DataChangeEvent < Wx::CommandEvent
     EVT_DATA_CHANGED = Wx::EvtHandler.register_class(self, nil, 'evt_data_changed', 1)
@@ -233,13 +233,8 @@ module Hexwrench
       refresh()
     end
 
-    # This method just repaints the window
-#    def repaint
-#      paint_buffered {|dc| on_paint(dc)}
-#    end
 
-
-    # This method does the heavy lifting of drawing the hex editor dump 
+    # This method does the heavy lifting in drawing the hex editor dump 
     # window. Takes a 'dc' device context parameter
     def on_paint(dc)
       return unless @started
@@ -286,12 +281,6 @@ module Hexwrench
             @select_bgs[ (@cursor.area+1) % AREAS.size ]
           ]
           colorize_byte_bg(sbrushes, dc, hX+h_off, aX, y)
-#          hsw = (@selection.last == idx)? @hex_width : hex_w
-#          dc.set_pen(Wx::TRANSPARENT_PEN)
-#          dc.set_brush(@select_bgs[ @cursor.area ])
-#          dc.draw_rectangle(hX+h_off, y, hsw, @txt_height)
-#          dc.set_brush(@select_bgs[ (@cursor.area+1) % AREAS.size ])
-#          dc.draw_rectangle(aX, y, @asc_width, @txt_height)
         end
 
         dc.set_text_foreground(text_color)
