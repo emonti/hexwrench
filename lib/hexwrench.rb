@@ -4,7 +4,7 @@ rescue LoadError
 end
 
 module Hexwrench
-  VERSION = "0.2.0"
+  VERSION = "0.2.1"
 end
 require 'wx'
 require 'hexwrench/edit_window'

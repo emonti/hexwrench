@@ -38,5 +38,6 @@ PROJ.notes.tags << "X"+"XX" # muhah! so we don't note our-self
 PROJ.rcov.opts += ["--exclude",  "rcov.rb", "--exclude", "eventmachine"]
 
 depend_on 'wxruby', '>= 2.0.0'
+depend_on 'rbkb'
 
 # EOF
