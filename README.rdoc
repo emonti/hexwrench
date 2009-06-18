@@ -1,7 +1,7 @@
 
 = hexwrench
 
-* http://www.github.com/emonti/hexwrench
+* http://emonti.github.com/hexwrench
 
 == DESCRIPTION:
 
